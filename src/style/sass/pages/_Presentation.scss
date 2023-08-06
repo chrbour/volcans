@@ -1,0 +1,33 @@
+
+.title__ContainerLetters{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 150px;
+    
+}
+
+@for $i from 0 to 7{
+    .title__Letter--#{$i}{
+        font-size: 40px;
+        animation: presentation__bounce 2s cubic-bezier(.73,.2,.73,.26) alternate infinite;
+        animation-delay: $i*0.2s;
+    }
+}
+
+
+.title__Paragraph{
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.imgPresentation__Container{
+    display: flex;
+    justify-content: center;
+}
+.imgPresentation__Image{
+    height: 200px;
+    
+}
