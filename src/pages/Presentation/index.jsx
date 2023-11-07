@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import imageVolcan from '../../assets/imageVolcan.png';
-
+import {Link} from 'react-router-dom';
 function Presentation() {
 	const title = [
 		{
@@ -36,7 +35,7 @@ function Presentation() {
 	let $i = -1;
 	let titleLetter;
 	let keyLetter;
-	const word = title.map((letters) => {
+	const word = title.map(letters => {
 		{
 			$i++;
 			titleLetter = 'title__Letter--' + $i;
@@ -57,14 +56,16 @@ function Presentation() {
 		<>
 			<h1 className='title__ContainerLetters'>{word}</h1>
 			<p className='title__Paragraph'>
-				Bienvenue sur le site des plus beaux volcans du monde !
+				Bienvenue sur le site des plus beaux <br/> volcans du monde !
 			</p>
 			<div className='imgPresentation__Container'>
-				<img
-					className='imgPresentation__Image'
-					src={imageVolcan}
-					alt="Image d'un volcan"
-				></img>
+				<Link to='/Accueil' ClassName="lienAccueil">
+					<img
+						className='imgPresentation__Image'
+						src={imageVolcan}
+						alt="Image d'un volcan"
+					></img>
+				</Link>
 			</div>
 			<p className='title__Paragraph'>Cliquez sur l'image</p>
 		</>

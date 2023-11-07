@@ -7,14 +7,41 @@ body {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(130px);
+    transform: translateY(200px);
   }
 }
+.containerBanner {
+  height: 250px;
+  width: 75%;
+  margin: 30px auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.imageBanner {
+  position: absolute;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .imageBanner {
+    top: -100px;
+  }
+}
+@media (max-width: 768px) {
+  .imageBanner {
+    height: 100%;
+  }
+}
+
 .title__ContainerLetters {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 150px;
+  height: 250px;
+  margin-top: 100px;
 }
 
 .title__Letter--0 {
@@ -62,8 +89,8 @@ body {
 .title__Paragraph {
   text-align: center;
   color: #FFFFFF;
-  font-size: 20px;
-  margin-top: 20px;
+  font-size: 26px;
+  margin-bottom: 50px;
 }
 
 .imgPresentation__Container {

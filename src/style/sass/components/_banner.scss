@@ -1,0 +1,23 @@
+.containerBanner{
+    height: 250px;
+    width: 75%;
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+}
+    
+.imageBanner{
+    position: absolute;
+    width: 100%;
+    @media (min-width: 1024px ){
+        top: -100px;
+    }
+    @media (max-width: 768px){
+        height: 100%;
+    }
+    
+    
+}
