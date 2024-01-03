@@ -1,35 +1,43 @@
 import React from 'react';
 import imageVolcan from '../../assets/imageVolcan.png';
+import letterV from '../../assets/lettre-v-feu.webp';
+import letterO from '../../assets/lettre-o-feu.webp';
+import letterL from '../../assets/lettre-l-feu.webp';
+import letterC from '../../assets/lettre-c-feu.webp';
+import letterA from '../../assets/lettre-a-feu.webp';
+import letterN from '../../assets/lettre-n-feu.webp';
+import letterS from '../../assets/lettre-s-feu.webp';
 import {Link} from 'react-router-dom';
+
 function Presentation() {
 	const title = [
 		{
 			letter: 'V',
-			color: '#F333FF',
+			name: letterV,
 		},
 		{
 			letter: 'O',
-			color: 'red',
+			name: letterO,
 		},
 		{
 			letter: 'L',
-			color: 'blue',
+			name: letterL,
 		},
 		{
 			letter: 'C',
-			color: 'yellow',
+			name: letterC,
 		},
 		{
 			letter: 'A',
-			color: 'pink',
+			name: letterA,
 		},
 		{
 			letter: 'N',
-			color: 'Orange',
+			name: letterN,
 		},
 		{
 			letter: 'S',
-			color: 'purple',
+			name: letterS,
 		},
 	];
 	let $i = -1;
@@ -42,13 +50,13 @@ function Presentation() {
 			keyLetter = 'Letter' + $i;
 		}
 		return (
-			<div
+			<img
 				className={titleLetter}
 				key={keyLetter}
-				style={{ color: letters.color, marginRight: 5, marginLeft: 5 }}
+				src = {letters.name}
 			>
-				{letters.letter}
-			</div>
+			</img>
+		
 		);
 	});
 
@@ -56,7 +64,7 @@ function Presentation() {
 		<>
 			<h1 className='title__ContainerLetters'>{word}</h1>
 			<p className='title__Paragraph'>
-				Bienvenue sur le site des plus beaux <br/> volcans du monde !
+				Bienvenue sur le site des plus beaux volcans du monde !
 			</p>
 			<div className='imgPresentation__Container'>
 				<Link to='/Accueil' ClassName="lienAccueil">

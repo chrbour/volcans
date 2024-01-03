@@ -4,14 +4,20 @@
     flex-direction: row;
     justify-content: center;
     height: 250px;
-    margin-top: 100px;
+    margin: 20px 0 150px;
 }
 
 @for $i from 0 to 7{
     .title__Letter--#{$i}{
-        font-size: 40px;
+        height: 30%;
         animation: presentation__bounce 2s cubic-bezier(.73,.2,.73,.26) alternate infinite;
         animation-delay: $i*0.2s;
+        @media (min-width: 1260px){
+            height: 70%;
+        }
+        @media screen and (min-width: 900px) and (max-width: 1259px){
+            height: 50%;
+        }
     }
 }
 
@@ -27,6 +33,9 @@
     justify-content: center;
 }
 .imgPresentation__Image{
-    height: 250px;
-    
+    height: 200px;
+    transition: height 0.5s ease-in-out;
+    &:hover{
+        height: 240px;
+    }
 }

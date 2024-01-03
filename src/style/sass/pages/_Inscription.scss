@@ -1,0 +1,43 @@
+.inscription__page{
+    display: flex;
+    flex-direction: column;
+}
+
+.inscription__header{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.inscription__form{
+    margin: auto;
+    width: 50%;
+    padding-top: 70px;
+    font-size: 20px;
+    text-align: center;
+    input{
+        font-size: 20px;
+        width: 45%;
+    }
+}
+.inscription__buttons{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    button{
+        padding: 5px;
+        width: 100px;
+        height: 50px;
+        border-radius: 50px;
+        margin: 20px;
+        background-color: rgb(64, 192, 83);
+        transition: transform 0.2s;
+        &:hover{
+           cursor: pointer; 
+           transform: scale(1.1);
+        }
+    } 
+}
+ .inscription__buttons--annuler {
+        background-color: rgb(92, 83, 92) !important;
+        
+    }
