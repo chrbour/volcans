@@ -66,6 +66,13 @@ body {
   text-decoration: none;
 }
 
+.picto {
+  height: 40px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
 .title__ContainerLetters {
   display: flex;
   flex-direction: row;

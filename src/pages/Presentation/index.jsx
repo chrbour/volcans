@@ -54,12 +54,12 @@ function Presentation() {
 				className={titleLetter}
 				key={keyLetter}
 				src = {letters.name}
+				alt = "letters"
 			>
 			</img>
-		
 		);
 	});
-
+	sessionStorage.setItem("connexion", 0);
 	return (
 		<>
 			<h1 className='title__ContainerLetters'>{word}</h1>

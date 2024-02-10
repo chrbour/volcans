@@ -17,7 +17,6 @@ function Inscription(){
                 'email': email,
                 'mdp': mdp
             }
-            sessionStorage.setItem('user', user);
             fetch("http://localhost:3000/api/auth/signup",{
                 method: 'POST',
                 headers: {
@@ -37,6 +36,7 @@ function Inscription(){
                     form.reset();
                 }
                 else {
+                    sessionStorage.setItem('connexion', 1);
                     alert('Bienvenue sur le site des Volcans.\nInscription OK')
                     window.location = "/Accueil/";
                 }

@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 function Connexion(){
     let regexEmail = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}/g;
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const form  = e.target;
@@ -17,7 +16,7 @@ function Connexion(){
                 'email': email,
                 'mdp': mdp
             }
-            sessionStorage.setItem('user', user);
+            
             fetch("http://localhost:3000/api/auth/login",{
                 method: 'POST',
                 headers: {
@@ -28,31 +27,22 @@ function Connexion(){
             })
             .then((res) => {
                 return res.json();
-                /*if (res.ok){console.log(JSON.parse(res));
-                    
-                }
-                else{
-                    alert('Paire Adresse Mail / Mot de passe incorrecte !');
-                    form.reset();
-                }*/
             })
             .then((value) => {
                 if (value.token) {
+                    sessionStorage.setItem('connexion', 1);
                     alert(`Bienvenue sur le site des volcans.`);
                     window.location = "/Accueil/";
                 }
                 else {
-                    console.log(value);
+                console.log(value);
                 alert(value.message);
                 form.reset();
-                }
-                
+                } 
             })
             .catch((err) => {
                 console.log(err);
-            });
-            
-            
+            });  
         }
         else {
             alert('L\'adresse mail n\'est pas valide !');
