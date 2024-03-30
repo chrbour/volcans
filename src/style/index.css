@@ -8,6 +8,11 @@ body {
   color: #FFFFFF;
 }
 
+h1 {
+  text-align: center;
+  margin: 25px 0 40px;
+}
+
 @keyframes presentation__bounce {
   0% {
     transform: translateY(0);
@@ -60,6 +65,7 @@ body {
 }
 .menuAccueil button:hover {
   transform: scale(1.2);
+  cursor: pointer;
 }
 .menuAccueil button a {
   color: #FFFFFF;
@@ -237,7 +243,7 @@ body {
 .inscription__form {
   margin: auto;
   width: 50%;
-  padding-top: 70px;
+  padding-top: 0px;
   font-size: 20px;
   text-align: center;
 }

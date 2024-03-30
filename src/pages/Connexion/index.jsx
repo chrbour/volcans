@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from '../../components/Banner';
+import Pictogram from "../../components/Pictogram";
 import {Link} from 'react-router-dom';
 
 function Connexion(){
@@ -52,6 +53,7 @@ function Connexion(){
     return(
         <div>
             <Banner/>
+            <Pictogram/>
             <div className = 'inscription__page'>
                 <div className = 'inscription__header'>
                     <h1 className = 'inscription__title'>CONNEXION</h1>

@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from '../../components/Banner';
+import Pictogram from "../../components/Pictogram";
 import {Link} from 'react-router-dom';
 
 function Inscription(){
@@ -55,6 +56,7 @@ function Inscription(){
     return(
         <div>
             <Banner/>
+            <Pictogram/>
             <div className = 'inscription__page'>
                 <div className = 'inscription__header'>
                     <h1 className = 'inscription__title'>INSCRIPTION</h1>

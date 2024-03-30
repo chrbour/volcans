@@ -1,22 +1,13 @@
 import React from "react";
 import Banner from '../../components/Banner';
 import Navbar from "../../components/Navbar";
-import pictoN from "../../assets/pictoNoir.jpg";
-import pictoV from "../../assets/pictoVert.jpg";
+import Pictogram from '../../components/Pictogram';
 
 function Accueil(){
-    let connected = sessionStorage.getItem("connexion");
-    let picto = pictoN;
-    let pictoAlt = "Pictogramme Noir";
-    if (connected == 1){
-        picto = pictoV;
-        pictoAlt = "Pictogramme Vert";
-    }
     return(
         <div>
             <Banner/>
-            <img className = "picto" src = {picto} alt = {pictoAlt}></img>
-            <p>{connected}</p>
+            <Pictogram/>
             <Navbar/>
             <div className = 'texteAccueil'>
                 <p>Ce site n'est pas un catalogue de tous les volcans exitants.<br/>
