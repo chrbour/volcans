@@ -1,10 +1,11 @@
 import React from "react";
 import Banner from '../../components/Banner';
 import Pictogram from "../../components/Pictogram";
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
-function Connexion(){
+function Connexion({connected, setConnected}){
     let regexEmail = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}/g;
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         const form  = e.target;
@@ -31,9 +32,9 @@ function Connexion(){
             })
             .then((value) => {
                 if (value.token) {
-                    sessionStorage.setItem('connexion', 1);
+                    setConnected('Connected');
                     alert(`Bienvenue sur le site des volcans.`);
-                    window.location = "/Accueil/";
+                    navigate("/Accueil/");
                 }
                 else {
                 console.log(value);
@@ -50,10 +51,13 @@ function Connexion(){
             form.reset();
         }
     }
+    const deconnect = () => {
+        setConnected('Not Connected');
+    }
     return(
         <div>
             <Banner/>
-            <Pictogram/>
+            <Pictogram connected = {connected}/>
             <div className = 'inscription__page'>
                 <div className = 'inscription__header'>
                     <h1 className = 'inscription__title'>CONNEXION</h1>
@@ -64,13 +68,13 @@ function Connexion(){
                     <label htmlFor = 'mdp'>Mot de passe: </label>
                     <input type = 'text' name = 'mdp' id = 'mdp' required></input><br /><br />
                     <div className = 'inscription__buttons'>
-                        <button type='submit' value = 'Envoyer' >Envoyer</button>
-                        <Link to = '/Accueil'><button className = 'inscription__buttons--annuler'>Annuler</button></Link>
+                        <button type ='submit' value = 'Envoyer' >Envoyer</button>
+                        <Link to = '/Accueil '><button className = 'connexion__buttons--cancel'>Annuler</button></Link>
+                        <Link to = '/Accueil'><button className = 'connexion__buttons--logout' onClick = {deconnect}>Déconnexion</button></Link>
                     </div>
                 </form>
             </div>
         </div>
     )
 }
-
 export default Connexion;

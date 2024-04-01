@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import Banner from '../../components/Banner';
 import Pictogram from "../../components/Pictogram";
 import {Link} from 'react-router-dom';
 
-function Inscription(){
+function Inscription({connected, setConnected}){
     let regexEmail = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}/g;
-
+    const navigate = useNavigate();console.log('Inscription1', connected);
     const handleSubmit = (e) => {
         e.preventDefault();
         const form  = e.target;
@@ -37,16 +38,14 @@ function Inscription(){
                     form.reset();
                 }
                 else {
-                    sessionStorage.setItem('connexion', 1);
-                    alert('Bienvenue sur le site des Volcans.\nInscription OK')
-                    window.location = "/Accueil/";
+                    setConnected('Connected');
+                    alert('Bienvenue sur le site des Volcans.\nInscription OK');
+                    navigate("/Accueil/");
                 }
             })
             .catch((res,err) => {
                 console.log(err);
             });
-            
-            
         }
         else {
             alert('L\'adresse mail n\'est pas valide !');
@@ -56,7 +55,7 @@ function Inscription(){
     return(
         <div>
             <Banner/>
-            <Pictogram/>
+            <Pictogram connected = {connected}/>
             <div className = 'inscription__page'>
                 <div className = 'inscription__header'>
                     <h1 className = 'inscription__title'>INSCRIPTION</h1>
@@ -68,7 +67,7 @@ function Inscription(){
                     <input type = 'text' name = 'mdp' id = 'mdp' required></input><br /><br />
                     <div className = 'inscription__buttons'>
                         <button type='submit' value = 'Envoyer' >Envoyer</button>
-                        <Link to = '/Accueil'><button className = 'inscription__buttons--annuler'>Annuler</button></Link>
+                        <Link to = '/Accueil'><button className = 'inscription__buttons--cancel'>Annuler</button></Link>
                     </div>
                 </form>
             </div>

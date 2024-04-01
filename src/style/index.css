@@ -76,7 +76,8 @@ h1 {
   height: 40px;
   position: absolute;
   top: 30px;
-  right: 30px;
+  right: 50px;
+  border-radius: 10px;
 }
 
 .title__ContainerLetters {
@@ -271,8 +272,35 @@ h1 {
   transform: scale(1.1);
 }
 
-.inscription__buttons--annuler {
+.inscription__buttons--cancel {
   background-color: rgb(92, 83, 92) !important;
+}
+
+.connexion__buttons {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+.connexion__buttons button {
+  padding: 5px;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  margin: 20px;
+  background-color: rgb(64, 192, 83);
+  transition: transform 0.2s;
+}
+.connexion__buttons button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.connexion__buttons--cancel {
+  background-color: rgb(92, 83, 92) !important;
+}
+
+.connexion__buttons--logout {
+  background-color: rgb(243, 47, 70) !important;
 }
 
 .pageError {
@@ -317,6 +345,47 @@ h1 {
   .pageError .textError h2 {
     font-size: 20px;
   }
+}
+
+#contribution__form {
+  display: flex;
+  justify-content: center;
+}
+#contribution__form label {
+  font-size: 20px;
+}
+#contribution__imgBtn {
+  cursor: pointer;
+  color: #00b1ca;
+  font-weight: bold;
+  padding: 10px;
+  border: solid 2px;
+  border-radius: 20px;
+  margin: 0 40px;
+  font-size: 12px !important;
+}
+#contribution__pictures {
+  width: 650px;
+  display: flex;
+  flex-wrap: wrap;
+}
+#contribution__volcanoFiles {
+  display: none;
+}
+#contribution__description {
+  background-color: rgb(195, 250, 250);
+  border: solid 2px cyan;
+  border-radius: 10px;
+  width: 500px;
+  height: 150px;
+  font-size: 15px;
+}
+#contribution__volcanoType {
+  width: 150px;
+  padding: 0 0 0 10px;
+}
+#contribution__NoConnected {
+  text-align: center;
 }
 
 /*# sourceMappingURL=index.css.map */

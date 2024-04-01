@@ -1,0 +1,24 @@
+.connexion__buttons{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    button{
+        padding: 5px;
+        width: 100px;
+        height: 50px;
+        border-radius: 50px;
+        margin: 20px;
+        background-color: rgb(64, 192, 83);
+        transition: transform 0.2s;
+        &:hover{
+           cursor: pointer; 
+           transform: scale(1.1);
+        }
+    } 
+}
+.connexion__buttons--cancel {
+    background-color: rgb(92, 83, 92) !important; 
+}
+.connexion__buttons--logout {
+    background-color: rgb(243, 47, 70) !important; 
+}

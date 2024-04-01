@@ -3,11 +3,12 @@ import Banner from '../../components/Banner';
 import Navbar from "../../components/Navbar";
 import Pictogram from '../../components/Pictogram';
 
-function Accueil(){
+function Accueil({connected}){
+    console.log('Accueil: ',connected)
     return(
         <div>
             <Banner/>
-            <Pictogram/>
+            <Pictogram connected = {connected}/>
             <Navbar/>
             <div className = 'texteAccueil'>
                 <p>Ce site n'est pas un catalogue de tous les volcans exitants.<br/>

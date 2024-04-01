@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Presentation from '../../pages/Presentation';
 import Photos from '../../pages/Photos';
@@ -10,15 +10,17 @@ import Error from '../../pages/Error';
 
 
 function Routeur() {
+	const [connected, setConnected] = useState('Not Connected');
+	console.log('Routeur: ',connected);
 	return (
 		<Router>
 			<Routes>
 				<Route path = '/' element = {<Presentation />} />
-				<Route path = '/Photos' element = {<Photos/>} />
-				<Route path = '/Contribution' element = {<Contribution/>} />
-				<Route path = '/Accueil' element = {<Accueil/>} />
-				<Route path = '/Connexion' element = {<Connexion/>}/>
-				<Route path = '/Inscription' element = {<Inscription/>} />
+				<Route path = '/Photos' element = {<Photos connected = {connected}/>} />
+				<Route path = '/Contribution' element = {<Contribution connected = {connected}/>} />
+				<Route path = '/Accueil' element = {<Accueil connected = {connected}/>} />
+				<Route path = '/Connexion' element = {<Connexion connected ={connected} setConnected = {setConnected}/>}/>
+				<Route path = '/Inscription' element = {<Inscription connected = {connected} setConnected = {setConnected}/>} />
 				<Route path = '*' element = {<Error />} />
 			</Routes>
 		</Router>
