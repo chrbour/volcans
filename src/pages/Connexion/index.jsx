@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Banner from '../../components/Banner';
 import Pictogram from "../../components/Pictogram";
 import {Link, useNavigate} from 'react-router-dom';
+import { ConnectedContext } from "../../utils/context/ConnectedProvider";
 
-function Connexion({connected, setConnected}){
+function Connexion(){
     let regexEmail = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}/g;
+    const {connected} = useContext(ConnectedContext);
+    const {setConnected} = useContext(ConnectedContext);
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();

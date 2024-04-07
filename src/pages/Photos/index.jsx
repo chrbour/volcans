@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Banner from '../../components/Banner';
 import Navbar from '../../components/Navbar';
 import Pictogram from '../../components/Pictogram';
+import { ConnectedContext } from "../../utils/context/ConnectedProvider";
 
-function Photos({connected}){
+function Photos(){
+    const {connected} = useContext(ConnectedContext);
     return(
         <div>
             <Banner/>

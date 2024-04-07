@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ConnectedContext } from "../../utils/context/ConnectedProvider";
 import Banner from '../../components/Banner';
 import Navbar from "../../components/Navbar";
 import Pictogram from '../../components/Pictogram';
 
-function Accueil({connected}){
+function Accueil(){
+    const { connected } = useContext(ConnectedContext);
     console.log('Accueil: ',connected)
     return(
         <div>

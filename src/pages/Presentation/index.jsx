@@ -70,8 +70,8 @@ function Presentation() {
 				<Link to='/Accueil' ClassName="lienAccueil">
 					<img
 						className='imgPresentation__Image'
-						src={imageVolcan}
-						alt="Image d'un volcan"
+						src = {imageVolcan}
+						alt= "Un volcan"
 					></img>
 				</Link>
 			</div>

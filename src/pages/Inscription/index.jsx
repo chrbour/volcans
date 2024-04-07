@@ -1,12 +1,13 @@
-import React from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useContext } from 'react';
+import {useNavigate, Link} from 'react-router-dom';
 import Banner from '../../components/Banner';
 import Pictogram from "../../components/Pictogram";
-import {Link} from 'react-router-dom';
+import { ConnectedContext } from '../../utils/context/ConnectedProvider';
 
-function Inscription({connected, setConnected}){
+function Inscription(){
     let regexEmail = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}/g;
-    const navigate = useNavigate();console.log('Inscription1', connected);
+    const {connected, setConnected} = useContext(ConnectedContext);
+    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
         const form  = e.target;
