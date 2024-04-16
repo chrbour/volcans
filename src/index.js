@@ -4,6 +4,7 @@ import Routeur from  './components/Routeur';
 import './style/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+localStorage.clear();
 root.render(
   <React.StrictMode>
     <Routeur/>

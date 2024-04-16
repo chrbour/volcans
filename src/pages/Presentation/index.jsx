@@ -59,7 +59,6 @@ function Presentation() {
 			</img>
 		);
 	});
-	sessionStorage.setItem("connexion", 0);
 	return (
 		<>
 			<h1 className='title__ContainerLetters'>{word}</h1>

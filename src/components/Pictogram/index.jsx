@@ -2,10 +2,10 @@ import React from 'react';
 import pictoN from "../../assets/pictoNoir.jpg";
 import pictoV from "../../assets/pictoVert.jpg";
 
-function Pictogram({connected}){console.log('Pictogram: ', connected);
+function Pictogram({connected}){
         let picto = pictoN;
         let pictoAlt = "Pictogramme Noir";
-        if (connected === 'Connected'){console.log('oui');
+        if (connected === 'Connected'){
             picto = pictoV;
             pictoAlt = "Pictogramme Vert";
         }

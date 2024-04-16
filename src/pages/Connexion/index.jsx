@@ -36,6 +36,7 @@ function Connexion(){
             .then((value) => {
                 if (value.token) {
                     setConnected('Connected');
+                    localStorage.setItem('token', value.token);
                     alert(`Bienvenue sur le site des volcans.`);
                     navigate("/Accueil/");
                 }
@@ -56,6 +57,7 @@ function Connexion(){
     }
     const deconnect = () => {
         setConnected('Not Connected');
+        localStorage.removeItem('token');
     }
     return(
         <div>

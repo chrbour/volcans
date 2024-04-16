@@ -41,6 +41,7 @@ function Inscription(){
                 else {
                     setConnected('Connected');
                     alert('Bienvenue sur le site des Volcans.\nInscription OK');
+                    localStorage.setItem('token', value.token)
                     navigate("/Accueil/");
                 }
             })
