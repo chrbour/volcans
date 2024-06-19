@@ -8,7 +8,7 @@ export default function Navbar(){
         <>
             <div className="menuAccueil">
                 <button ><Link to = '/Photos'>Voir les photos</Link></button>
-                <button><Link to = '/Contribution'>Ajouter contribution</Link></button>
+                {connected === "Connected"? <button><Link to = '/Contribution'>Ajouter contribution</Link></button> : null}
                 <button><Link to = '/Connexion'>Connexion</Link></button>
                 {connected === 'Connected'? null : <button><Link to = '/Inscription'>Inscription</Link></button>}
             </div>

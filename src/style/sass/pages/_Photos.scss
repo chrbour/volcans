@@ -1,0 +1,70 @@
+.photos{
+    &__container{
+        display: flex;
+        justify-content: center;
+        height: 20vh;
+        width: 100vw;
+    }
+    &__image{
+        width: 300px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    &__arrowsContainer{
+        display:flex;
+        align-items:center;
+    }
+    &__arrows{
+        font-size: 150px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+.filtres{
+    &__Section{
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    &__Container{
+        display: flex;
+        justify-content: center;
+    }
+    &__Type{
+        margin: 10px;
+        width: 300px;
+    }
+    &_Name{
+        margin: 10px;
+        width: 300px;
+    }
+}
+#volcanoType--Tous:hover{
+    cursor: pointer;
+}
+#volcanoType--Effusif:hover{
+   cursor: pointer;
+}
+#volcanoType--Explosif:hover{
+    cursor: pointer;
+}
+#volcanoSelected:hover{
+    cursor:pointer;
+}
+#volcanoSelected+option:hover{
+    cursor: pointer;
+}
+#volcanoSelected{
+    background-color: rgb(216, 125, 109);
+    width: 200px;
+}
+.volcanoNameReinitialization{
+    margin-left: 200px;
+    font-size: 40px;
+    color: rgb(222, 47, 47);
+    &:hover{
+        cursor: pointer;
+    }
+}

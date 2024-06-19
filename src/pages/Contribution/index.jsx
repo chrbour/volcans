@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import {useNavigate} from 'react-router-dom';
 import Banner from '../../components/Banner';
 import Navbar from '../../components/Navbar';
 import Pictogram from '../../components/Pictogram';
@@ -8,7 +9,7 @@ import { ConnectedContext } from '../../utils/context/ConnectedProvider';
 function Contribution(){
     const {connected} = useContext(ConnectedContext);
     const [pictures, setPictures] = useState([]);
-    
+    const navigate = useNavigate();
     const previewImage = (e) => {
         let fileList = [];
         for (let i=0; i < e.target.files.length; i++){
@@ -36,7 +37,10 @@ function Contribution(){
                 }
             })
             .then ((value) => {
-                   alert(value);      
+                    function waitBeforeMoving(){
+                        navigate("/Accueil")
+                    }
+                   setTimeout(waitBeforeMoving,5000);
             })
             .catch((res,err) => {
                 console.log(err)
@@ -50,7 +54,7 @@ return(
         <Navbar/>
         <h1 className = "contribution__title">CONTRIBUTION</h1>
         {connected === 'Connected'?
-            <div style = {{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div id = 'contribution__Page'>
                 <form id = 'contribution__formContainer' onSubmit =  {createVolcano} enctype = 'multipart/form-data'>
                     <div id = "contribution__form">
                         <div >
@@ -62,14 +66,14 @@ return(
                                 <label htmlFor='constribution__description'>Description: </label><br/>
                                 <textarea type = "text" id = "contribution__description" name = 'contribution__description' required placeholder='Très joli volcan'></textarea><br/><br />
                             </div>
-                            <fieldset id = 'contribution__volcanoType' style = {{display: 'flex'}}>
+                            <fieldset id = 'contribution__volcanoType'>
                                 <legend>Type de Volcan</legend>
                                 <div>                            
                                     <input type = 'radio' id = 'contribution__type1' value = "Explosif"  name = "contribution__volcanoType" required></input>
                                     <label htmlFor = "contribution__type1">Explosif</label>
                                 </div>
                                 <div>
-                                    <img src = {typeVolcan} style = {{margin: '0 5px',height: '200px'}} alt = "Type d'éruption"></img>
+                                    <img id = 'contribution__volcanoTypeImage' src = {typeVolcan} alt = "Type d'éruption"></img>
                                 </div>
                                 <div>
                                     <input type = 'radio' id = 'contribution__type2' value = 'Effusif' name = 'contribution__volcanoType'></input>
@@ -83,7 +87,7 @@ return(
                             <div id = 'contribution__pictures'>
                                 {pictures.map((e,index) =>{
                                 return  <>
-                                            <img src = {URL.createObjectURL(e)} alt = {`Volcan n°${index+1}`} key = {`image_${index+1}`} style = {{width: 150, height: 100, margin: '30px'}}/>
+                                            <img id = 'contribution__volcanoFilesImage' src = {URL.createObjectURL(e)} alt = {`Volcan n°${index+1}`} key = {`image_${index+1}`} />
                                         </>
                             }
                             )}
@@ -91,7 +95,7 @@ return(
                         </div>
                     </div>
                     {pictures.length > 0 ? 
-                        <input type = 'submit' value = 'Enregistrer' style = {{fontSize: '18px'}} name = 'contribution__save'></input> 
+                        <input id = 'contribution__submit' type = 'submit' value = 'Enregistrer' name = 'contribution__save'></input> 
                         : null}
                 </form>
             </div>

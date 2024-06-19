@@ -220,6 +220,81 @@ h1 {
   height: 240px;
 }
 
+.photos__container {
+  display: flex;
+  justify-content: center;
+  height: 20vh;
+  width: 100vw;
+}
+.photos__image {
+  width: 300px;
+}
+.photos__image:hover {
+  cursor: pointer;
+}
+.photos__arrowsContainer {
+  display: flex;
+  align-items: center;
+}
+.photos__arrows {
+  font-size: 150px;
+}
+.photos__arrows:hover {
+  cursor: pointer;
+}
+
+.filtres__Section {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.filtres__Container {
+  display: flex;
+  justify-content: center;
+}
+.filtres__Type {
+  margin: 10px;
+  width: 300px;
+}
+.filtres_Name {
+  margin: 10px;
+  width: 300px;
+}
+
+#volcanoType--Tous:hover {
+  cursor: pointer;
+}
+
+#volcanoType--Effusif:hover {
+  cursor: pointer;
+}
+
+#volcanoType--Explosif:hover {
+  cursor: pointer;
+}
+
+#volcanoSelected:hover {
+  cursor: pointer;
+}
+
+#volcanoSelected + option:hover {
+  cursor: pointer;
+}
+
+#volcanoSelected {
+  background-color: rgb(216, 125, 109);
+  width: 200px;
+}
+
+.volcanoNameReinitialization {
+  margin-left: 200px;
+  font-size: 40px;
+  color: rgb(222, 47, 47);
+}
+.volcanoNameReinitialization:hover {
+  cursor: pointer;
+}
+
 .texteAccueil {
   text-align: center;
   width: 55%;
@@ -377,6 +452,11 @@ h1 {
 #contribution__volcanoFiles {
   display: none;
 }
+#contribution__volcanoFilesImage {
+  width: 150px;
+  height: 100px;
+  margin: 30px;
+}
 #contribution__description {
   background-color: rgb(195, 250, 250);
   border: solid 2px cyan;
@@ -386,11 +466,19 @@ h1 {
   font-size: 15px;
 }
 #contribution__volcanoType {
+  display: flex;
   width: 500px;
   padding: 0 0 0 10px;
 }
+#contribution__volcanoTypeImage {
+  margin: 0 5px;
+  height: 200px;
+}
 #contribution__NoConnected {
   text-align: center;
+}
+#contribution__submit {
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=index.css.map */
