@@ -1,26 +1,29 @@
 import React, { useContext, useState } from "react";
 import Banner from '../../components/Banner';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Pictogram from '../../components/Pictogram';
 import { ConnectedContext } from "../../utils/context/ConnectedProvider";
+import { VolcanoContext } from '../../utils/context/VolcanoProvider';
 
 function Photos(){
     const {connected} = useContext(ConnectedContext);
+    const {setVolcanoId} = useContext(VolcanoContext);
     const [executedPage, updateExecutedPage] = useState(0);
     const [countImage, updateCountImage] = useState(0);
     const [images, updateImages] = useState({});
     const [volcanoNames, updateVolcanoNames] = useState ([]);
     const [selectedImages, updateSelectedImages] = useState({});
     const [displayImages, updateDisplayImages] = useState([]);
-    const [identification, updateIdentification] = useState('');
     const [selectionNamesSize, updateSelectionNamesSize] = useState(4);
-
+    
+    const navigate = useNavigate();
     let tab = [];
     let names = [];
 
     function selectImage(e){
-        console.log('image',e.target.dataset.selectImageId);
-        updateIdentification(e.target.dataset.selectImageId)
+        setVolcanoId(e.target.dataset.selectimageid);
+        navigate('/Description');
     }
 
     function handleLeft(e){
@@ -33,48 +36,40 @@ function Photos(){
         e.preventDefault();
         updateCountImage(countImage+4);
         updateDisplayImages(selectedImages.slice(countImage+4, countImage+8));
-        console.log('handleRight');
     }
 
     const typeSelection = (e) => {
         let selection = e.target.value;
-        console.log(selection);
         updateSelectionNamesSize(4);
         switch (selection){
             case 'Tous':
-                console.log('Tous est sélectionné') ;
-                console.log(images);
                 updateSelectedImages(images);
                 updateCountImage(0);
                 updateDisplayImages(images.slice(0, 4));
                 names = images.map((e) => e.name);
-                names = names.filter((element, index , arr) => arr.indexOf(element) === index);console.log("names ", names);
+                names = names.filter((element, index , arr) => arr.indexOf(element) === index);
                 updateVolcanoNames(names);
                 break;
             case 'Effusif':
-                console.log('Effusif est sélectionné') ;
                 let effusifSelected = images.filter((element) => {
                     return element.type === 'Effusif'
                 });
-                console.log('effusifSelected ',effusifSelected);
                 updateSelectedImages(effusifSelected);
                 updateCountImage(0);
                 updateDisplayImages(effusifSelected.slice(0, 4));
                 names = effusifSelected.map((e) => e.name);
-                names = names.filter((element, index , arr) => arr.indexOf(element) === index);console.log("names ", names);
+                names = names.filter((element, index , arr) => arr.indexOf(element) === index);
                 updateVolcanoNames(names);
                 break;
             case 'Explosif':
-                console.log('Explosif est sélectionné') ;
                 let explosifSelected = images.filter((element) => {
                     return element.type === 'Explosif'
                 });
-                console.log(explosifSelected);
                 updateSelectedImages(explosifSelected);
                 updateCountImage(0);
                 updateDisplayImages(explosifSelected.slice(0, 4));
                 names = explosifSelected.map((e) => e.name);
-                names = names.filter((element, index , arr) => arr.indexOf(element) === index);console.log("names ", names);
+                names = names.filter((element, index , arr) => arr.indexOf(element) === index);
                 updateVolcanoNames(names);
                 break;    
             default: break;
@@ -82,7 +77,6 @@ function Photos(){
     }
 
     const volcanoNameSelection = (e) => {
-        console.log(e.target.value);
         let selection = images.filter((el) => el.name === e.target.value);
         updateSelectedImages(selection);
         updateCountImage(0);
@@ -95,13 +89,14 @@ function Photos(){
         updateCountImage(0);
         updateDisplayImages(images.slice(0, 4));
         names = images.map((e) => e.name);
-        names = names.filter((element, index , arr) => arr.indexOf(element) === index);console.log("names ", names);
+        names = names.filter((element, index , arr) => arr.indexOf(element) === index);
         updateVolcanoNames(names);
         updateSelectionNamesSize(4);
         updateExecutedPage(0);
     }
     
-    if (executedPage === 0){fetch('http://localhost:3000/api/volcans/') 
+    if (executedPage === 0){
+        fetch('http://localhost:3000/api/volcans/') 
             .then((res) => {
                 if (res.ok){
                     return res.json();
@@ -116,21 +111,15 @@ function Photos(){
                     }
                 }
                 names = names.filter((val, index, arr) => arr.indexOf(val) === index);
-                console.log("Nombre de volcans",value.volcans.length);
-                console.log("names", names);
-                updateImages(tab);console.log('tab',tab);
+                updateImages(tab);
                 updateSelectedImages(tab);
                 updateVolcanoNames(names);
                 if (tab.length >= 4){
                     updateDisplayImages (tab.slice(countImage, countImage+4));
-                    console.log("display", tab.slice(countImage, countImage+4));
                 }
                 else {
                     updateDisplayImages (tab.slice(countImage));
-                    console.log("display", tab.slice(countImage));
-                }
-                
-                
+                }   
             })
             .catch((res,err) => {
                 console.log(err)
@@ -146,8 +135,8 @@ function Photos(){
                 <div className = "photos__container">
                     {countImage >=4?<p className = 'photos__arrowsContainer'><i className="photos__arrows fa-solid fa-caret-left" onClick={handleLeft}></i></p>:null}
                     {selectedImages.length > 0?
-                        displayImages.map((e) => {
-                            return <img onClick = {selectImage} className = 'photos__image' src={e.picture} alt = {e.name} data-selectImageId = {e.id} ></img>  
+                        displayImages.map((e, index) => {
+                            return <img className = 'photos__image' onClick = {selectImage} src={e.picture} alt = {e.name} data-selectimageid = {e.id} key = {`Image ${index}`}></img>
                         })
                         : null
                     }
@@ -156,19 +145,21 @@ function Photos(){
             </div>
             <h2 className = 'filtres__Section'>FILTRES:</h2>            
             <div className = "filtres__Container">
-                <form className = "filtres__Type" >
-                    {executedPage === 0? <input type="radio" name = 'volcanoType' id = 'volcanoType--tous' value = 'Tous' checked/>
-                    :<input type="radio" name = 'volcanoType' id = 'volcanoType--Tous' value = 'Tous' onChange = {typeSelection}/>}
+                <form className = "filtres__Type" onChange = {typeSelection}>
+                    <input type="radio" name = 'volcanoType' id = 'volcanoType--Tous' value = 'Tous' defaultChecked/>
                     <label htmlFor = 'volcanoType--Tous'>Tous</label><br />
-                    <input type = 'radio' name = 'volcanoType' id = 'volcanoType--Effusif' value = 'Effusif' onChange = {typeSelection}/>
+                    <input type = 'radio' name = 'volcanoType' id = 'volcanoType--Effusif' value = 'Effusif' />
                     <label htmlFor = 'volcanoType--Effusif'> Effusif</label><br/>
-                    <input type = 'radio' name = 'volcanoType' id = 'volcanoType--Explosif' value = 'Explosif' onChange = {typeSelection}/>
+                    <input type = 'radio' name = 'volcanoType' id = 'volcanoType--Explosif' value = 'Explosif' />
                     <label htmlFor = 'volcanoType--Explosif'> Explosif</label><br/>
                 </form>
                 <form>
                     <h3>Nom du volcan</h3>
                     <select name="volcanoName" id="volcanoSelected" size = {selectionNamesSize}>
-                        {volcanoNames.length>0?volcanoNames.map((e)=><option value = {e} onClick = {volcanoNameSelection}>{e}</option>):null}
+                        {volcanoNames.length>0?volcanoNames.map((e, index)=> {
+                            return <option value = {e} onClick = {volcanoNameSelection} key = {`Photo ${index}`} >{e}</option>
+                        }):null
+                        }
                     </select>
                 </form>
                 <i className="fa-regular fa-circle-xmark volcanoNameReinitialization" onClick = {reinitialization}></i>

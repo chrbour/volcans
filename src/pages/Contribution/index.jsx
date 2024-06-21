@@ -40,7 +40,7 @@ function Contribution(){
                     function waitBeforeMoving(){
                         navigate("/Accueil")
                     }
-                   setTimeout(waitBeforeMoving,5000);
+                   setTimeout(waitBeforeMoving,2000);
             })
             .catch((res,err) => {
                 console.log(err)

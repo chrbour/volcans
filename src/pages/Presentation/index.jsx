@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import imageVolcan from '../../assets/imageVolcan.png';
 import letterV from '../../assets/lettre-v-feu.webp';
 import letterO from '../../assets/lettre-o-feu.webp';
@@ -7,7 +8,7 @@ import letterC from '../../assets/lettre-c-feu.webp';
 import letterA from '../../assets/lettre-a-feu.webp';
 import letterN from '../../assets/lettre-n-feu.webp';
 import letterS from '../../assets/lettre-s-feu.webp';
-import {Link} from 'react-router-dom';
+
 
 function Presentation() {
 	const title = [
@@ -43,12 +44,10 @@ function Presentation() {
 	let $i = -1;
 	let titleLetter;
 	let keyLetter;
-	const word = title.map(letters => {
-		{
-			$i++;
-			titleLetter = 'title__Letter--' + $i;
-			keyLetter = 'Letter' + $i;
-		}
+	const word = title.map(letters => {	
+		$i++;
+		titleLetter = 'title__Letter--' + $i;
+		keyLetter = 'Letter' + $i;	
 		return (
 			<img
 				className={titleLetter}
@@ -66,7 +65,7 @@ function Presentation() {
 				Bienvenue sur le site des plus beaux volcans du monde !
 			</p>
 			<div className='imgPresentation__Container'>
-				<Link to='/Accueil' ClassName="lienAccueil">
+				<Link to='/Accueil' className="lienAccueil">
 					<img
 						className='imgPresentation__Image'
 						src = {imageVolcan}
