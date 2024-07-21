@@ -481,4 +481,18 @@ h1 {
   font-size: 18px;
 }
 
+.crsl {
+  width: 600px;
+  margin: 40px;
+  border: solid 3px white;
+}
+
+#maCarte {
+  height: 400px;
+  width: 500px;
+  background-color: pink;
+  border: solid white 2px;
+  color: rgb(0, 0, 0);
+}
+
 /*# sourceMappingURL=index.css.map */
