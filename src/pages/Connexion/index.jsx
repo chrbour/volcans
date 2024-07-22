@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Banner from '../../components/Banner';
 import Pictogram from "../../components/Pictogram";
 import {Link, useNavigate} from 'react-router-dom';
@@ -8,6 +8,7 @@ function Connexion(){
     let regexEmail = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}/g;
     const {connected} = useContext(ConnectedContext);
     const {setConnected} = useContext(ConnectedContext);
+    const [connexion, setConnexion] = useState(0);
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,13 +38,10 @@ function Connexion(){
                 if (value.token) {
                     setConnected('Connected');
                     localStorage.setItem('token', value.token);
-                    alert(`Bienvenue sur le site des volcans.`);
-                    navigate("/Accueil/");
+                    setConnexion(1);
                 }
                 else {
-                console.log(value);
-                alert(value.message);
-                form.reset();
+                setConnexion(3);
                 } 
             })
             .catch((err) => {
@@ -51,13 +49,32 @@ function Connexion(){
             });  
         }
         else {
-            alert('L\'adresse mail n\'est pas valide !');
-            form.reset();
+            setConnexion(2);
         }
     }
     const deconnect = () => {
         setConnected('Not Connected');
         localStorage.removeItem('token');
+    }
+    const goToAccueil = () => {
+        navigate("/Accueil/");
+    }
+    const refresh = () => {
+        window.location.reload();
+    }
+    function Validate ({connexion}){
+        if (connexion === 1){
+            setTimeout(goToAccueil, 3000);
+            return (<h2 className = 'connexion__messageOK'>Bienvenue sur le site des volcans</h2>)
+        }
+        else if (connexion === 2 ){
+            setTimeout(refresh, 3000);
+            return(<h2 className = 'connexion__messageNotOK'>Adresse mail non valide</h2>)
+        }
+        else if (connexion === 3 ){
+            setTimeout(refresh, 3000);
+            return(<h2 className = 'connexion__messageNotOK'>Paire mail / mot de passe incorrecte !</h2>)
+        }
     }
     return(
         <div>
@@ -77,7 +94,9 @@ function Connexion(){
                         <Link to = '/Accueil '><button className = 'connexion__buttons--cancel'>Annuler</button></Link>
                         <Link to = '/Accueil'><button className = 'connexion__buttons--logout' onClick = {deconnect}>Déconnexion</button></Link>
                     </div>
+                    <Validate connexion = {connexion}/>
                 </form>
+                
             </div>
         </div>
     )

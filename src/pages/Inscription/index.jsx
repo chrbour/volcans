@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import Banner from '../../components/Banner';
 import Pictogram from "../../components/Pictogram";
@@ -8,6 +8,7 @@ function Inscription(){
     let regexEmail = /[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.][a-zA-Z]{2,3}/g;
     const {connected, setConnected} = useContext(ConnectedContext);
     const navigate = useNavigate();
+    const [connexion, setConnexion] = useState(0);
     const handleSubmit = (e) => {
         e.preventDefault();
         const form  = e.target;
@@ -35,14 +36,12 @@ function Inscription(){
             })
             .then ((value) => {
                 if (value.message === 'doublon'){
-                    alert('Erreur: Cet identifiant est déjà utilisé.');
-                    form.reset();
+                    setConnexion(1);
                 }
                 else {
                     setConnected('Connected');
-                    alert('Bienvenue sur le site des Volcans.\nInscription OK');
-                    localStorage.setItem('token', value.token)
-                    navigate("/Accueil/");
+                    setConnexion(2);
+                    localStorage.setItem('token', value.token);
                 }
             })
             .catch((res,err) => {
@@ -50,8 +49,27 @@ function Inscription(){
             });
         }
         else {
-            alert('L\'adresse mail n\'est pas valide !');
-            form.reset();
+            setConnexion(3);
+        }
+    }
+    const goToAccueil = () => {
+        navigate("/Accueil/");
+    }
+    const refresh = () => {
+        window.location.reload();
+    }
+    function Validate ({connexion}){
+        if (connexion === 1){
+            setTimeout(refresh, 3000);
+            return (<h2 className = 'inscription__messageNotOK'>Erreur: Cet identifiant est déjà utilisé !</h2>)
+        }
+        else if (connexion === 2 ){
+            setTimeout(goToAccueil, 3000);
+            return(<h2 className = 'inscription__messageOK'>Bienvenue sur le site des Volcans<br/>Inscription OK</h2>)
+        }
+        else if (connexion === 3 ){
+            setTimeout(refresh, 3000);
+            return(<h2 className = 'inscription__messageNotOK'>L'adresse mail n'est pas valide !</h2>)
         }
     }
     return(
@@ -71,6 +89,7 @@ function Inscription(){
                         <button type='submit' value = 'Envoyer' >Envoyer</button>
                         <Link to = '/Accueil'><button className = 'inscription__buttons--cancel'>Annuler</button></Link>
                     </div>
+                    <Validate connexion = {connexion}/>
                 </form>
             </div>
         </div>

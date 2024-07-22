@@ -1,3 +1,23 @@
+.connexion__page{
+    display: flex;
+    flex-direction: column;
+}
+.connexion__header{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.connexion__form{
+    margin: auto;
+    width: 50%;
+    padding-top: 0px;
+    font-size: 20px;
+    text-align: center;
+    input{
+        font-size: 20px;
+        width: 45%;
+    }
+}
 .connexion__buttons{
     display: flex;
     justify-content: center;
@@ -16,9 +36,24 @@
         }
     } 
 }
+
 .connexion__buttons--cancel {
     background-color: rgb(92, 83, 92) !important; 
 }
 .connexion__buttons--logout {
     background-color: rgb(243, 47, 70) !important; 
+}
+.connexion__messageOK{
+    background-color: rgb(56, 56, 184);
+    height: 40px;
+    width: 80%;
+    border-radius: 20px;
+    margin: auto;
+    
+}.connexion__messageNotOK{
+    background-color: rgb(175, 38, 31);
+    height: 40px;
+    width: 80%;
+    border-radius: 20px;
+    margin: auto;
 }
