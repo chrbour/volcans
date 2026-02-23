@@ -87,7 +87,7 @@ function Inscription(){
                     <input type = 'text' name = 'mdp' id = 'mdp' required></input><br /><br />
                     <div className = 'inscription__buttons'>
                         <button type='submit' value = 'Envoyer' >Envoyer</button>
-                        <Link to = '/Accueil'><button className = 'inscription__buttons--cancel'>Annuler</button></Link>
+                        <Link to = '/Accueil' className = 'inscription__buttons--cancel'>Annuler</Link>
                     </div>
                     <Validate connexion = {connexion}/>
                 </form>
