@@ -1,4 +1,3 @@
-import React from 'react';
 import pictoN from "../../assets/pictoNoir.jpg";
 import pictoV from "../../assets/pictoVert.jpg";
 
@@ -15,3 +14,4 @@ function Pictogram({connected}){
 }
 
 export default Pictogram;
+

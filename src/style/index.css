@@ -392,7 +392,7 @@ h1 {
   justify-content: center;
   padding: 20px;
 }
-.connexion__buttons button {
+.connexion__buttons .button {
   padding: 5px;
   width: 100px;
   height: 50px;
@@ -401,17 +401,26 @@ h1 {
   background-color: rgb(64, 192, 83);
   transition: transform 0.2s;
 }
-.connexion__buttons button:hover {
+.connexion__buttons .button:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 
 .connexion__buttons--cancel {
+  padding: 5px;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  color: #1cb51c;
+  font-size: 13.3px;
   background-color: rgb(92, 83, 92) !important;
-}
-
-.connexion__buttons--logout {
-  background-color: rgb(243, 47, 70) !important;
 }
 
 .connexion__messageOK {

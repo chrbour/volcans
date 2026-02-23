@@ -16,8 +16,9 @@ export default function Navbar(){
                 {connected === "Connected"? 
                     <>
                         <Link to = '/Contribution' className="button" title = 'Modifie/ajoute des photos'>Ajouter contribution</Link>
-                        <Link onClick = {deconnect} className="button" title = 'Déconnexion de l&apos;utilisateur' >Déconnexion</Link>
-                    </> : 
+                        <p onClick = {deconnect} className="button" title = 'Déconnexion de l&apos;utilisateur' >Déconnexion</p>
+                    </> 
+                    : 
                     <>
                         <Link to = '/Connexion' className="button" title = 'Connecte-toi pour modifier/ajouter des photos'>Connexion</Link>
                         <Link to = '/Inscription' className="button" title = 'Crée un compte pour te connecter et accéder aux fonctionnalités du site'>Inscription</Link>

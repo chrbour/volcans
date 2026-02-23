@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Banner from '../../components/Banner';
 import Pictogram from "../../components/Pictogram";
 import {Link, useNavigate} from 'react-router-dom';
@@ -52,10 +52,6 @@ function Connexion(){
             setConnexion(2);
         }
     }
-    const deconnect = () => {
-        setConnected('Not Connected');
-        localStorage.removeItem('token');
-    }
     const goToAccueil = () => {
         navigate("/Accueil/");
     }
@@ -91,8 +87,7 @@ function Connexion(){
                     <input type = 'text' name = 'mdp' id = 'mdp' required></input><br /><br />
                     <div className = 'inscription__buttons'>
                         <button type ='submit' value = 'Envoyer' >Envoyer</button>
-                        <Link to = '/Accueil '><button className = 'connexion__buttons--cancel'>Annuler</button></Link>
-                        <Link to = '/Accueil'><button className = 'connexion__buttons--logout' onClick = {deconnect}>Déconnexion</button></Link>
+                        <Link to = '/Accueil ' className = 'connexion__buttons--cancel'>Annuler</Link>
                     </div>
                     <Validate connexion = {connexion}/>
                 </form>

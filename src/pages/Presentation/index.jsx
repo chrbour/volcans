@@ -66,11 +66,7 @@ function Presentation() {
 			</p>
 			<div className='imgPresentation__Container'>
 				<Link to='/Accueil' className="lienAccueil" title = "Entre dans le monde fascinant des volcans!">
-					<img
-						className='imgPresentation__Image'
-						src = {imageVolcan}
-						alt= "Un volcan"
-					></img>
+					<img className='imgPresentation__Image' src = {imageVolcan} alt= "Un volcan" />
 				</Link>
 			</div>
 			<p className='title__Paragraph'>Cliquez sur l'image</p>

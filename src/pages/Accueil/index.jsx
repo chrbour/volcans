@@ -6,7 +6,6 @@ import Pictogram from '../../components/Pictogram';
 
 function Accueil(){
     const { connected } = useContext(ConnectedContext);
-    console.log('Accueil: ',connected)
     return(
         <div>
             <Banner/>
