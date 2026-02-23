@@ -53,23 +53,20 @@ h1 {
   justify-content: center;
   font-size: 20px;
 }
-.menuAccueil button {
+.menuAccueil .button {
   transform: scale(1);
   transition: transform 0.5s;
   background-color: rgb(106, 26, 26);
   color: white;
   font-size: 20px;
   border-radius: 20px;
+  text-decoration: none;
   padding: 10px;
   margin: 0 30px;
 }
-.menuAccueil button:hover {
+.menuAccueil .button:hover {
   transform: scale(1.2);
   cursor: pointer;
-}
-.menuAccueil button a {
-  color: #FFFFFF;
-  text-decoration: none;
 }
 
 .picto {
@@ -522,7 +519,7 @@ h1 {
 }
 #contribution__volcanoType {
   display: flex;
-  width: 500px;
+  width: 900px;
   padding: 0 0 0 10px;
 }
 #contribution__volcanoTypeImage {

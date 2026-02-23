@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import {useContext, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import Banner from '../../components/Banner';
 import Pictogram from "../../components/Pictogram";

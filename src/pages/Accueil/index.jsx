@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { ConnectedContext } from "../../utils/context/ConnectedProvider";
+import { useContext } from "react";
+import  { ConnectedContext } from "../../utils/context/ConnectedProvider";
 import Banner from '../../components/Banner';
 import Navbar from "../../components/Navbar";
 import Pictogram from '../../components/Pictogram';

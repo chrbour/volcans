@@ -4,13 +4,25 @@ import { ConnectedContext } from "../../utils/context/ConnectedProvider";
 
 export default function Navbar(){
     const {connected} = useContext(ConnectedContext);
+    const {setConnected} = useContext(ConnectedContext);
+    const deconnect = () => {
+        setConnected('Not Connected');
+        localStorage.removeItem('token');
+    }
     return(
         <>
             <div className="menuAccueil">
-                <button ><Link to = '/Photos'>Voir les photos</Link></button>
-                {connected === "Connected"? <button><Link to = '/Contribution'>Ajouter contribution</Link></button> : null}
-                <button><Link to = '/Connexion'>Connexion</Link></button>
-                {connected === 'Connected'? null : <button><Link to = '/Inscription'>Inscription</Link></button>}
+                <Link to = '/Photos' title = "Voir toutes les photos partagées" className="button">Voir les photos</Link>
+                {connected === "Connected"? 
+                    <>
+                        <Link to = '/Contribution' className="button" title = 'Modifie/ajoute des photos'>Ajouter contribution</Link>
+                        <Link onClick = {deconnect} className="button" title = 'Déconnexion de l&apos;utilisateur' >Déconnexion</Link>
+                    </> : 
+                    <>
+                        <Link to = '/Connexion' className="button" title = 'Connecte-toi pour modifier/ajouter des photos'>Connexion</Link>
+                        <Link to = '/Inscription' className="button" title = 'Crée un compte pour te connecter et accéder aux fonctionnalités du site'>Inscription</Link>
+                    </>
+                }
             </div>
         </>
     )

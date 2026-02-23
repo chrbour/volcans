@@ -10,7 +10,7 @@ function Pictogram({connected}){
             pictoAlt = "Pictogramme Vert";
         }
         return(
-            <img className = "picto" src = {picto} alt = {pictoAlt}></img>
+            <img className = "picto" src = {picto} alt = {pictoAlt} title = {connected}></img>
         )
 }
 

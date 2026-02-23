@@ -8,6 +8,7 @@ import { ConnectedContext } from '../../utils/context/ConnectedProvider';
 
 function Contribution(){
     const {connected} = useContext(ConnectedContext);
+    const [format, setFormat] = useState('DMS');
     const [pictures, setPictures] = useState([]);
     const navigate = useNavigate();
     const previewImage = (e) => {
@@ -46,7 +47,14 @@ function Contribution(){
                 console.log(err)
         })
     }     
-
+    const btnFormat = (e) => {console.log(e.target.value);
+        if (e.target.value == 'DMS'){
+            setFormat('DMS');
+        }
+        else {
+            setFormat('DD')
+        }
+    }
 return(
     <>
         <Banner/>
@@ -57,29 +65,61 @@ return(
             <div id = 'contribution__Page'>
                 <form id = 'contribution__formContainer' onSubmit =  {createVolcano} enctype = 'multipart/form-data'>
                     <div id = "contribution__form">
+                        <img id = 'contribution__volcanoTypeImage' src = {typeVolcan} alt = "Type d'éruption"></img>
                         <div >
                             <div>
                                 <label htmlFor='volcanoName'>Nom du volcan: </label>
                                 <input type = "text" id = "volcanoName" name = 'volcanoName' placeholder = 'Nom' required></input>
                             </div><br/>
                             <div>
+                                <div onChange = {btnFormat}>
+                                    <span>Coordonnées GPS:</span>
+                                    <input type = 'radio' name = 'GPSformat' id = 'DMS' checked value = 'DMS'></input>
+                                    <label htmlFor = 'GPSformat'>DMS</label>
+                                    <input type = 'radio' name = 'GPSformat' id = 'DD' value = 'DD' ></input>
+                                    <label htmlFor = 'GPSformat'>DD</label>
+                                </div>
+                                <div>
+                                    <input type = 'number' id = 'volcanoGPSlat__DMS--D' min = '0' max = '90' style = {{width:'30px'}}></input>
+                                    <span>° </span>
+                                    <input type = 'number' id = 'volcanoGPSlat__DMS--M' min = '0' max = '60' style = {{width:'30px'}}></input>
+                                    <span>' </span>
+                                    <input type = 'number' id = 'volcanoGPSlat__DMS--S' min = '0' max = '60' step = '0.00001' style = {{width:'90px'}}></input>
+                                    <span>" </span>
+                                    <select name = 'lat' id = 'lat'>
+                                        <option value = 'N'>N</option>
+                                        <option value = 'S'>S</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <input type = 'number' id = 'volcanoGPSlng__DMS--D' min = '0' max = '90' style = {{width:'30px'}}></input>
+                                    <span>° </span>
+                                    <input type = 'number' id = 'volcanoGPSlng__DMS--M' min = '0' max = '60' style = {{width:'30px'}}></input>
+                                    <span>' </span>
+                                    <input type = 'number' id = 'volcanoGPSlng__DMS--S' min = '0' max = '60'  step = '0.00001' style = {{width:'90px'}}></input>
+                                    <span>" </span>
+                                    <select name = 'lng' id = 'lng'>
+                                        <option value = 'O'>O</option>
+                                        <option value = 'E'>E</option>
+                                    </select>
+                                </div>
+                                    : 
+                                    <div>
+                                        <p>Format DD</p>
+                                    </div>
+                            </div>
+                            <div>
                                 <label htmlFor='constribution__description'>Description: </label><br/>
                                 <textarea type = "text" id = "contribution__description" name = 'contribution__description' required placeholder='Très joli volcan'></textarea><br/><br />
                             </div>
-                            <fieldset id = 'contribution__volcanoType'>
-                                <legend>Type de Volcan</legend>
-                                <div>                            
+                            
+                                <div>                        
                                     <input type = 'radio' id = 'contribution__type1' value = "Explosif"  name = "contribution__volcanoType" required></input>
-                                    <label htmlFor = "contribution__type1">Explosif</label>
-                                </div>
-                                <div>
-                                    <img id = 'contribution__volcanoTypeImage' src = {typeVolcan} alt = "Type d'éruption"></img>
-                                </div>
-                                <div>
+                                    <label htmlFor = "contribution__type1" >Explosif</label>
                                     <input type = 'radio' id = 'contribution__type2' value = 'Effusif' name = 'contribution__volcanoType'></input>
                                     <label htmlFor = 'contribution__type2'>Effusif</label>
-                                </div>
-                            </fieldset>
+                                </div>   
+                           
                         </div>
                         <div>
                             <label id = 'contribution__imgBtn' htmlFor = 'contribution__volcanoFiles'>Choisir une image</label><br/>
