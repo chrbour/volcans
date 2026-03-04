@@ -24,6 +24,13 @@
         padding: 15px 0;
         margin: 0 10px;
         height: 400px;
+        &--input{
+            display: flex;
+            align-items: center;
+            & p{
+                margin-left: 10px;
+            }
+        }
     }
     &__imgBtn{
         z-index: 2;
@@ -51,10 +58,10 @@
     }
     &__description{
         background-color:rgb(195, 250, 250);
-        border: solid 2px cyan;
+        border: solid 2px rgb(14, 146, 146);
         border-radius: 10px;
         width: 500px;
-        height: 100px;
+        height: 250px;
         font-size: 15px;
     }
     &__volcanoType {
