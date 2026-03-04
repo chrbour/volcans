@@ -12,20 +12,30 @@ function Contribution(){
 
     const previewImage = (e) => {
         let fileList = [];
-        setPictures([]);
         if(e.target.files.length > 6){
             window.alert("Vous ne pouvez pas ajouter plus de 6 images.");
             return;
         }
-        for (let i=0; i < e.target.files.length; i++){
+        for (let i=0; i < e.target.files.length; i++){console.log(typeof e.target.files,e.target.files[i]);
             const img = new Image();
             img.src = URL.createObjectURL(e.target.files[i]);
+            img.key = `ima_${i+1}`;
             img.onload = () => {
                 if(img.width > img.height){
                     fileList.push(e.target.files[i]);
                     setPictures(fileList);
                 }
-            }
+                else {
+                    let filesArray = Array.from(e.target.files);
+                    filesArray.splice(i,1);
+                    let dt = new DataTransfer();
+                    filesArray.forEach(file => {
+                        dt.items.add(file);
+                    });
+                    e.target.files = dt.files;
+                }
+            } 
+            window.URL.revokeObjectURL(e.target.files[i]);  
         }
     }
     const goToAccueil = () => {
@@ -153,7 +163,7 @@ return(
         <h1 className = "contribution__title">CONTRIBUTION</h1>
         {connected === 'Connected'?
             <div id = 'contribution__Page'>
-                <form id = 'contribution__formContainer' onSubmit =  {createVolcano} enctype = 'multipart/form-data'>
+                <form id = 'contribution__formContainer' onSubmit =  {createVolcano} encType = 'multipart/form-data'> 
                     <div id = "contribution__form">
                         <div id = "contribution__form--details" >
                             <div>
