@@ -447,7 +447,7 @@ h1 {
 }
 
 .connexion__messageOK {
-  background-color: rgb(56, 56, 184);
+  background-color: rgb(50, 112, 57);
   height: 40px;
   width: 80%;
   border-radius: 20px;
@@ -518,14 +518,21 @@ h1 {
 #contribution__form label {
   font-size: 20px;
 }
+#contribution__form--imgContainer {
+  border: 2px #ffffff solid;
+  padding: 15px 0;
+  margin: 0 10px;
+  height: 400px;
+}
 #contribution__imgBtn {
+  z-index: 2;
   cursor: pointer;
   color: #00b1ca;
   font-weight: bold;
   padding: 10px;
   border: solid 2px;
   border-radius: 20px;
-  margin: 0 40px;
+  margin: 5px;
   font-size: 12px !important;
 }
 #contribution__pictures {
@@ -555,14 +562,50 @@ h1 {
   padding: 0 0 0 10px;
 }
 #contribution__volcanoTypeImage {
-  margin: 0 5px;
-  height: 200px;
+  margin: 0 10px 0;
+  height: 180px;
 }
 #contribution__NoConnected {
   text-align: center;
 }
-#contribution__submit {
-  font-size: 18px;
+#contribution__NoConnected--btn {
+  padding: 5px;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  margin: 20px;
+  background-color: #00b1ca;
+  transition: transform 0.2s;
+}
+#contribution__NoConnected--btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+#contribution__button--submit {
+  padding: 5px;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  margin: 20px;
+  background-color: rgb(64, 192, 83);
+  transition: transform 0.2s;
+}
+#contribution__button--submit:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+#contribution__button--cancel {
+  padding: 5px;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  margin: 20px;
+  background-color: grey;
+  transition: transform 0.2s;
+}
+#contribution__button--cancel:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .crsl {

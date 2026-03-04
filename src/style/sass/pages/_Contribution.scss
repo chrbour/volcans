@@ -1,3 +1,11 @@
+@mixin button__details{
+    padding: 5px;
+    width: 100px;
+    height: 50px;
+    border-radius: 50px;
+    margin: 20px;
+}
+
 #contribution{
     &__formContainer{
         display: flex;
@@ -11,14 +19,21 @@
             font-size: 20px;
         }
     }
+    &__form--imgContainer{
+        border: 2px #ffffff solid;
+        padding: 15px 0;
+        margin: 0 10px;
+        height: 400px;
+    }
     &__imgBtn{
+        z-index: 2;
         cursor: pointer;
         color: #00b1ca;
         font-weight: bold;
         padding: 10px;
         border: solid 2px;
         border-radius: 20px;
-        margin: 0 40px;
+        margin: 5px;
         font-size: 12px !important;      
     }
     &__pictures{
@@ -48,14 +63,44 @@
         padding: 0 0 0 10px;
     }
     &__volcanoTypeImage{
-        margin: 0 5px;
-        height: 200px;
+        margin: 0 10px 0;
+        height: 180px;
     }
     &__NoConnected{
         text-align: center;
     }
-    &__submit{
-        font-size: 18px;
+    &__NoConnected--btn{
+        padding: 5px;
+        width: 100px;
+        height: 50px;
+        border-radius: 50px;
+        margin: 20px;
+        background-color: #00b1ca;
+        transition: transform 0.2s;
+        &:hover{
+              cursor: pointer; 
+              transform: scale(1.1);
+        }
+    }
+    &__button{
+        &--submit{
+            @include button__details;
+            background-color: rgb(64, 192, 83);
+            transition: transform 0.2s;
+            &:hover{
+                cursor: pointer; 
+                transform: scale(1.1);
+            }
+        }
+        &--cancel {
+            @include button__details;
+            background-color: grey;;
+            transition: transform 0.2s;
+            &:hover{
+                cursor: pointer; 
+                transform: scale(1.1);
+            }
+        }
     }
 }
 

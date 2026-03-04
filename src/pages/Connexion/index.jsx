@@ -46,6 +46,7 @@ function Connexion(){
             })
             .catch((err) => {
                 console.log(err);
+                alert("Une erreur est survenue, veuillez réessayer plus tard");
             });  
         }
         else {
@@ -85,10 +86,14 @@ function Connexion(){
                     <input type = 'email' name = 'email' id = "mail" required ></input><br /><br />
                     <label htmlFor = 'mdp'>Mot de passe: </label>
                     <input type = 'text' name = 'mdp' id = 'mdp' required></input><br /><br />
-                    <div className = 'inscription__buttons'>
-                        <button type ='submit' value = 'Envoyer' >Envoyer</button>
-                        <Link to = '/Accueil ' className = 'connexion__buttons--cancel'>Annuler</Link>
-                    </div>
+                    {connexion === 0?
+                        <div className = 'inscription__buttons'>
+                            <button type ='submit' value = 'Envoyer' >Envoyer</button>
+                            <Link to = '/Accueil ' className = 'connexion__buttons--cancel'>Annuler</Link>
+                        </div>
+                        :
+                        <br/>
+         }
                     <Validate connexion = {connexion}/>
                 </form>
                 

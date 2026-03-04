@@ -46,6 +46,7 @@ function Inscription(){
             })
             .catch((res,err) => {
                 console.log(err);
+                alert("Une erreur est survenue, veuillez réessayer plus tard");
             });
         }
         else {

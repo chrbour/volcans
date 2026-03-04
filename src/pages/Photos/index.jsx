@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Banner from '../../components/Banner';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
@@ -122,7 +122,8 @@ function Photos(){
                 }   
             })
             .catch((res,err) => {
-                console.log(err)
+                console.log(err);
+                alert("Une erreur est survenue, les photos ne peuvent pas s'afficher pour le moment, veuillez réessayer plus tard");
         });
     }      
     return(
