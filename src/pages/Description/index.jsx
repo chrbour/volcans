@@ -15,6 +15,9 @@ function Description(){
     const [volcan, updateVolcan] = useState('');
     const [images, updateImages] = useState([]);
     const [adress, updateAdress] = useState('');
+    const [coords, updateCoords] = useState([]);
+    
+
     
     useEffect(() => {
         fetch ('http://localhost:3000/api/volcans/')

@@ -237,9 +237,28 @@ h1 {
 }
 .photos__arrows {
   font-size: 150px;
+  color: #ffffff;
 }
 .photos__arrows:hover {
   cursor: pointer;
+}
+.photos__btnContainer {
+  display: flex;
+  justify-content: center;
+}
+.photos__btn--cancel {
+  padding: 5px;
+  color: white;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  margin: 20px;
+  background-color: grey;
+  transition: transform 0.2s;
+}
+.photos__btn--cancel:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .filtres__Section {
@@ -251,43 +270,37 @@ h1 {
   display: flex;
   justify-content: center;
 }
-.filtres__Type {
-  margin: 10px;
-  width: 300px;
-}
 .filtres_Name {
   margin: 10px;
   width: 300px;
 }
 
-#volcanoType--Tous:hover {
-  cursor: pointer;
+.volcanoSelected {
+  background-color: rgb(227, 164, 153);
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 20px;
+  width: 300px;
+  max-height: 100px;
+  overflow: hidden;
+  background-color: #d69a8f;
 }
-
-#volcanoType--Effusif:hover {
-  cursor: pointer;
+.volcanoSelected option:checked {
+  background-color: #d69a8f;
 }
-
-#volcanoType--Explosif:hover {
-  cursor: pointer;
+.volcanoSelected option:hover {
+  background-color: #e1d4d1;
 }
-
-#volcanoSelected:hover {
+.volcanoSelected:hover {
   cursor: pointer;
-}
-
-#volcanoSelected + option:hover {
-  cursor: pointer;
-}
-
-#volcanoSelected {
-  background-color: rgb(216, 125, 109);
-  width: 200px;
 }
 
 .volcanoNameReinitialization {
-  margin-left: 200px;
   font-size: 40px;
+  width: 40px;
+  height: 40px;
+  margin: 20px;
   color: rgb(222, 47, 47);
 }
 .volcanoNameReinitialization:hover {
@@ -358,7 +371,7 @@ h1 {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  color: #1cb51c;
+  color: white;
   font-size: 13.3px;
   background-color: rgb(92, 83, 92) !important;
   transition: transform 0.2s;
@@ -438,7 +451,7 @@ h1 {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  color: #1cb51c;
+  color: white;
   font-size: 13.3px;
   background-color: rgb(92, 83, 92) !important;
   transition: transform 0.2s;

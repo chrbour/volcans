@@ -169,7 +169,8 @@ return(
                             <div>
                                 <label htmlFor='volcanoName'>Nom du volcan: </label>
                                 <input type = "text" id = "volcanoName" name = 'volcanoName' placeholder = 'Nom' required onBlur = {testingName}></input>
-                                {checked === true ? <span style = {{color: 'green', fontSize: '20px', marginLeft: '10px'}}>&#10003;</span> : null
+                                {checked === true ? <span style = {{color: 'green', fontSize: '20px', marginLeft: '10px'}}>&#10003;</span> : 
+                                    <span style = {{color: 'green', fontSize: '20px', marginLeft: '10px', visibility: 'hidden'}}>&#10003;</span> 
                                 }
                             </div>
                             <br/>

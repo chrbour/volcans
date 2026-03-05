@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import Banner from '../../components/Banner';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar';
 import Pictogram from '../../components/Pictogram';
 import { ConnectedContext } from "../../utils/context/ConnectedProvider";
 import { VolcanoContext } from '../../utils/context/VolcanoProvider';
@@ -20,7 +19,7 @@ function Photos(){
     const navigate = useNavigate();
     let tab = [];
     let names = [];
-
+    console.log("countImage ", countImage, "selectedImages ", selectedImages,"images", images, "displayImages ", displayImages, "volcanoNames ", volcanoNames, "selectionNamesSize ", selectionNamesSize);
     function selectImage(e){
         setVolcanoId(e.target.dataset.selectimageid);
         navigate('/Description');
@@ -38,44 +37,6 @@ function Photos(){
         updateDisplayImages(selectedImages.slice(countImage+4, countImage+8));
     }
 
-    const typeSelection = (e) => {
-        let selection = e.target.value;
-        updateSelectionNamesSize(4);
-        switch (selection){
-            case 'Tous':
-                updateSelectedImages(images);
-                updateCountImage(0);
-                updateDisplayImages(images.slice(0, 4));
-                names = images.map((e) => e.name);
-                names = names.filter((element, index , arr) => arr.indexOf(element) === index);
-                updateVolcanoNames(names);
-                break;
-            case 'Effusif':
-                let effusifSelected = images.filter((element) => {
-                    return element.type === 'Effusif'
-                });
-                updateSelectedImages(effusifSelected);
-                updateCountImage(0);
-                updateDisplayImages(effusifSelected.slice(0, 4));
-                names = effusifSelected.map((e) => e.name);
-                names = names.filter((element, index , arr) => arr.indexOf(element) === index);
-                updateVolcanoNames(names);
-                break;
-            case 'Explosif':
-                let explosifSelected = images.filter((element) => {
-                    return element.type === 'Explosif'
-                });
-                updateSelectedImages(explosifSelected);
-                updateCountImage(0);
-                updateDisplayImages(explosifSelected.slice(0, 4));
-                names = explosifSelected.map((e) => e.name);
-                names = names.filter((element, index , arr) => arr.indexOf(element) === index);
-                updateVolcanoNames(names);
-                break;    
-            default: break;
-        }
-    }
-
     const volcanoNameSelection = (e) => {
         let selection = images.filter((el) => el.name === e.target.value);
         updateSelectedImages(selection);
@@ -84,7 +45,7 @@ function Photos(){
         updateVolcanoNames([e.target.value]);
         updateSelectionNamesSize(1);
     }
-    const reinitialization = (e) => {
+    const reinitialization = () => {
         updateSelectedImages(images);
         updateCountImage(0);
         updateDisplayImages(images.slice(0, 4));
@@ -94,7 +55,6 @@ function Photos(){
         updateSelectionNamesSize(4);
         updateExecutedPage(0);
     }
-    
     if (executedPage === 0){
         fetch('http://localhost:3000/api/volcans/') 
             .then((res) => {
@@ -125,12 +85,12 @@ function Photos(){
                 console.log(err);
                 alert("Une erreur est survenue, les photos ne peuvent pas s'afficher pour le moment, veuillez réessayer plus tard");
         });
-    }      
+    };
+          
     return(
         <div>
             <Banner/>
             <Pictogram connected = {connected}/>
-            <Navbar/>
             <h1 className = 'Photos__Title'>APERCU DE VOS PLUS BEAUX PARTAGES DE VOLCANS:</h1>
             <div className="photo__body">
                 <div className = "photos__container">
@@ -144,27 +104,23 @@ function Photos(){
                     {countImage+4 <= selectedImages.length-1 ? <p className = 'photos__arrowsContainer'><i className = "photos__arrows fa-solid fa-caret-right" onClick={handleRight}></i></p> : null}
                 </div>
             </div>
-            <h2 className = 'filtres__Section'>FILTRES:</h2>            
+            <h2 className = 'filtres__Section'>Filtrer par Nom de Volcan:</h2>            
             <div className = "filtres__Container">
-                <form className = "filtres__Type" onChange = {typeSelection}>
-                    <input type="radio" name = 'volcanoType' id = 'volcanoType--Tous' value = 'Tous' defaultChecked/>
-                    <label htmlFor = 'volcanoType--Tous'>Tous</label><br />
-                    <input type = 'radio' name = 'volcanoType' id = 'volcanoType--Effusif' value = 'Effusif' />
-                    <label htmlFor = 'volcanoType--Effusif'> Effusif</label><br/>
-                    <input type = 'radio' name = 'volcanoType' id = 'volcanoType--Explosif' value = 'Explosif' />
-                    <label htmlFor = 'volcanoType--Explosif'> Explosif</label><br/>
-                </form>
                 <form>
-                    <h3>Nom du volcan</h3>
-                    <select name="volcanoName" id="volcanoSelected" size = {selectionNamesSize}>
+                    <select name="volcanoName" className="volcanoSelected" size = {selectionNamesSize}>
                         {volcanoNames.length>0?volcanoNames.map((e, index)=> {
                             return <option value = {e} onClick = {volcanoNameSelection} key = {`Photo ${index}`} >{e}</option>
                         }):null
                         }
                     </select>
                 </form>
-                <i className="fa-regular fa-circle-xmark volcanoNameReinitialization" onClick = {reinitialization}></i>
-
+                {selectionNamesSize === 1? <i className="fa-regular fa-circle-xmark volcanoNameReinitialization" onClick = {reinitialization}></i>
+                    : <i className="fa-regular fa-circle-xmark volcanoNameReinitialization" style = {{visibility : 'hidden'}}></i>
+                }
+            </div>
+            <br />
+            <div className = "photos__btnContainer">
+                <input type="button" value = "Retour" className = "photos__btn--cancel" onClick = {() => navigate('/Accueil')}/>
             </div>
         </div>
     )
