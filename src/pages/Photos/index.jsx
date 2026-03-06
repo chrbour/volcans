@@ -19,7 +19,7 @@ function Photos(){
     const navigate = useNavigate();
     let tab = [];
     let names = [];
-    console.log("countImage ", countImage, "selectedImages ", selectedImages,"images", images, "displayImages ", displayImages, "volcanoNames ", volcanoNames, "selectionNamesSize ", selectionNamesSize);
+    
     function selectImage(e){
         setVolcanoId(e.target.dataset.selectimageid);
         navigate('/Description');

@@ -16,9 +16,11 @@ function Contribution(){
             window.alert("Vous ne pouvez pas ajouter plus de 6 images.");
             return;
         }
-        for (let i=0; i < e.target.files.length; i++){console.log(typeof e.target.files,e.target.files[i]);
+        for (let i=0; i < e.target.files.length; i++){
+            console.log("file ",i," : ",e.target.files[i]);
             const img = new Image();
             img.src = URL.createObjectURL(e.target.files[i]);
+            console.log("source : ",img.src);
             img.key = `ima_${i+1}`;
             img.onload = () => {
                 if(img.width > img.height){
@@ -26,13 +28,7 @@ function Contribution(){
                     setPictures(fileList);
                 }
                 else {
-                    let filesArray = Array.from(e.target.files);
-                    filesArray.splice(i,1);
-                    let dt = new DataTransfer();
-                    filesArray.forEach(file => {
-                        dt.items.add(file);
-                    });
-                    e.target.files = dt.files;
+                    return;
                 }
             } 
             window.URL.revokeObjectURL(e.target.files[i]);  

@@ -59,7 +59,10 @@ function Description(){
                         <button type='submit' >BOUTON</button>
                     </form>
                 </div>
-                <MapWrapper name={volcan}/>
+                <div>
+                    <MapWrapper name = {volcan} typeView = "global"/>
+                    <MapWrapper name = {volcan} typeView = "volcan"/> 
+                </div>
             </div>
         </>
     )
