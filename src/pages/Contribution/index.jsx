@@ -12,28 +12,48 @@ function Contribution(){
 
     const previewImage = (e) => {
         let fileList = [];
-        if(e.target.files.length > 6){
-            window.alert("Vous ne pouvez pas ajouter plus de 6 images.");
-            return;
-        }
-        for (let i=0; i < e.target.files.length; i++){
-            console.log("file ",i," : ",e.target.files[i]);
-            const img = new Image();
-            img.src = URL.createObjectURL(e.target.files[i]);
-            console.log("source : ",img.src);
-            img.key = `ima_${i+1}`;
-            img.onload = () => {
-                if(img.width > img.height){
-                    fileList.push(e.target.files[i]);
-                    setPictures(fileList);
-                }
-                else {
-                    return;
-                }
-            } 
-            window.URL.revokeObjectURL(e.target.files[i]);  
-        }
+
+    if (e.target.files.length > 6) {
+        window.alert("Vous ne pouvez pas ajouter plus de 6 images.");
+        return;
     }
+
+    const filesArray = Array.from(e.target.files);
+
+    const promises = filesArray.map((file, i) => {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+
+            img.onload = () => {
+                if (img.width > img.height) {
+                    resolve({ file, error: false });
+                } else {
+                    resolve({ file, error: true });
+                }
+
+                URL.revokeObjectURL(img.src);
+            };
+        });
+    });
+
+    Promise.all(promises).then(results => {
+
+        const validFiles = results
+            .filter(r => !r.error)
+            .map(r => r.file);
+
+        fileList.push(...validFiles);
+        setPictures([...fileList]);
+        
+        let dt = new DataTransfer();
+        fileList.forEach(file => {
+            dt.items.add(file);
+        });
+        e.target.files = dt.files;
+    });        
+    }
+    
     const goToAccueil = () => {
         navigate("/Accueil/");
     }
@@ -61,7 +81,6 @@ function Contribution(){
         e.target.value = mots.join(' ');
         let testExistItem;
         let http = "https://fr.wikipedia.org/w/api.php?action=query&titles=" + e.target.value.split(' ').join('%20') + "&prop=coordinates&redirects=1&format=json&origin=*";
-        console.log("http : ",http);
         fetch(http)
             .then((res) => {
                 if (res.ok){
@@ -124,11 +143,12 @@ function Contribution(){
             console.log(err);
         })
     }
+
     const createVolcano = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-    
+        console.log("Data : ", [...formData.values()]);
         fetch('http://localhost:3000/api/volcans/',{
             method: 'POST',
             headers: {
@@ -143,9 +163,7 @@ function Contribution(){
                 }
             })
             .then (() => {
-                    
-                        navigate("/Accueil")
-                   
+                navigate("/Accueil")   
             })
             .catch((res,err) => {
                 console.log(err);
