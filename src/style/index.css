@@ -632,8 +632,8 @@ h1 {
 
 .crsl {
   width: 600px;
-  margin: 40px;
-  border: solid 3px white;
+  margin: 40px 40px 5px;
+  border: solid 3px #ffffff;
 }
 
 #mapid {
@@ -644,10 +644,62 @@ h1 {
   height: 250px;
   width: 500px;
   background-color: pink;
-  border: solid white 2px;
+  border: solid #ffffff 2px;
   border-radius: 20px;
   color: rgb(0, 0, 0);
   margin: 0;
+}
+
+#description, #description1 {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+#description__text, #description1__text {
+  margin: 20px;
+  width: 500px;
+}
+#description__details, #description1__details {
+  background-color: rgb(104, 43, 43);
+  margin: 10px;
+  padding: 10px;
+  border: solid 2px #ffffff;
+  border-radius: 20px;
+}
+#description__details a, #description1__details a {
+  text-decoration: none;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  padding: 5px;
+  font-size: 12px;
+  color: #000000;
+  background-color: #ffffff;
+}
+#description__details a:hover, #description1__details a:hover {
+  color: #ffffff;
+  background-color: #000000;
+}
+#description__comment, #description1__comment {
+  background-color: rgb(104, 43, 43);
+  margin: 10px;
+  padding: 10px;
+  border: solid 2px #ffffff;
+  border-radius: 20px;
+}
+#description__likesDislikes, #description1__likesDislikes {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+}
+#description__likesDislikes i, #description1__likesDislikes i {
+  margin: 0 10px 30px;
+}
+#description__likesDislikes i:hover, #description1__likesDislikes i:hover {
+  cursor: pointer;
+}
+#description button, #description1 button {
+  display: flex;
+  margin: 5px auto;
 }
 
 /*# sourceMappingURL=index.css.map */

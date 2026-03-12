@@ -13,45 +13,45 @@ function Contribution(){
     const previewImage = (e) => {
         let fileList = [];
 
-    if (e.target.files.length > 6) {
-        window.alert("Vous ne pouvez pas ajouter plus de 6 images.");
-        return;
-    }
+        if (e.target.files.length > 6) {
+            window.alert("Vous ne pouvez pas ajouter plus de 6 images.");
+            return;
+        }
 
-    const filesArray = Array.from(e.target.files);
+        const filesArray = Array.from(e.target.files);
 
-    const promises = filesArray.map((file, i) => {
-        return new Promise((resolve) => {
-            const img = new Image();
-            img.src = URL.createObjectURL(file);
+        const promises = filesArray.map((file, i) => {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = URL.createObjectURL(file);
 
-            img.onload = () => {
-                if (img.width > img.height) {
-                    resolve({ file, error: false });
-                } else {
-                    resolve({ file, error: true });
-                }
+                img.onload = () => {
+                    if (img.width > img.height) {
+                        resolve({ file, error: false });
+                    } else {
+                        resolve({ file, error: true });
+                    }
 
-                URL.revokeObjectURL(img.src);
-            };
+                    URL.revokeObjectURL(img.src);
+                };
+            });
         });
-    });
 
-    Promise.all(promises).then(results => {
+        Promise.all(promises).then(results => {
 
-        const validFiles = results
-            .filter(r => !r.error)
-            .map(r => r.file);
+            const validFiles = results
+                .filter(r => !r.error)
+                .map(r => r.file);
 
-        fileList.push(...validFiles);
-        setPictures([...fileList]);
-        
-        let dt = new DataTransfer();
-        fileList.forEach(file => {
-            dt.items.add(file);
-        });
-        e.target.files = dt.files;
-    });        
+            fileList.push(...validFiles);
+            setPictures([...fileList]);
+            
+            let dt = new DataTransfer();
+            fileList.forEach(file => {
+                dt.items.add(file);
+            });
+            e.target.files = dt.files;
+        });        
     }
     
     const goToAccueil = () => {
@@ -91,7 +91,6 @@ function Contribution(){
                 const pages = data.query.pages;
                 const pageId = Object.keys(pages)[0];
                 testExistItem = pageId;
-                const coords = pages[pageId].coordinates[0];
                 e.target.value = pages[pageId].title;
                 http = "https://fr.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=" + e.target.value.split(' ').join('%20') + "%20volcano&prop=coordinates&redirects=1&format=json&origin=*";
                 fetch(http)
@@ -110,7 +109,6 @@ function Contribution(){
                         } 
                         else {
                             setChecked(true);
-                            volcanoTypes(e.target.value);
                         }
                     })
                     .catch((err) => {
@@ -128,27 +126,11 @@ function Contribution(){
             });
         
     }
-    const volcanoTypes = (name) => {
-        console.log('volcanoTypes', name);
-        fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${name}`)
-        .then((res) => {
-            if (res.ok){
-                return res.json();
-            }
-        })
-        .then((data) => {
-            console.log("Datas : ", data.extract,data.extract.includes('actif'));
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }
 
     const createVolcano = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        console.log("Data : ", [...formData.values()]);
         fetch('http://localhost:3000/api/volcans/',{
             method: 'POST',
             headers: {

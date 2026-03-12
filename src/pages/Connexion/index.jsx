@@ -35,6 +35,7 @@ function Connexion(){
                 return res.json();
             })
             .then((value) => {
+                console.log("affiche value : ",value);
                 if (value.token) {
                     setConnected('Connected');
                     localStorage.setItem('token', value.token);
