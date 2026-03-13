@@ -28,7 +28,7 @@
     }
     &__btn--cancel{
         padding: 5px;
-        color: white;
+        color: #ffffff;
         width: 100px;
         height: 50px;
         border-radius: 50px;
@@ -62,10 +62,10 @@
     padding: 10px;
     text-align: center;
     margin-top: 20px;
-    border-radius: 20px;
+    border: solid 2px #ffffff;
     width: 300px;
     max-height: 100px;
-    overflow: hidden;
+    overflow-y: scroll;
     background-color: #d69a8f;
     & option{
         &:checked{

@@ -41,7 +41,11 @@
         border: solid 2px;
         border-radius: 20px;
         margin: 5px;
-        font-size: 12px !important;      
+        font-size: 12px !important; 
+        transition: 0.2s; 
+        &:hover{
+            transform: scale(1.05)
+        }    
     }
     &__pictures{
         width: 650px;
@@ -78,7 +82,7 @@
     }
     &__NoConnected--btn{
         padding: 5px;
-        width: 100px;
+        width: 150px;
         height: 50px;
         border-radius: 50px;
         margin: 20px;
@@ -108,6 +112,23 @@
                 transform: scale(1.1);
             }
         }
+    }
+    &__newVolcan{
+        position: absolute;
+        z-index:2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(13, 151, 13);
+        width: 450px;
+        height: 250px;
+        border: 2px solid #ffffff;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
     }
 }
 

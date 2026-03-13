@@ -13,6 +13,10 @@ h1 {
   margin: 25px 0 40px;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 @keyframes presentation__bounce {
   0% {
     transform: translateY(0);
@@ -248,7 +252,7 @@ h1 {
 }
 .photos__btn--cancel {
   padding: 5px;
-  color: white;
+  color: #ffffff;
   width: 100px;
   height: 50px;
   border-radius: 50px;
@@ -280,10 +284,10 @@ h1 {
   padding: 10px;
   text-align: center;
   margin-top: 20px;
-  border-radius: 20px;
+  border: solid 2px #ffffff;
   width: 300px;
   max-height: 100px;
-  overflow: hidden;
+  overflow-y: scroll;
   background-color: #d69a8f;
 }
 .volcanoSelected option:checked {
@@ -556,6 +560,10 @@ h1 {
   border-radius: 20px;
   margin: 5px;
   font-size: 12px !important;
+  transition: 0.2s;
+}
+#contribution__imgBtn:hover {
+  transform: scale(1.05);
 }
 #contribution__pictures {
   width: 650px;
@@ -592,7 +600,7 @@ h1 {
 }
 #contribution__NoConnected--btn {
   padding: 5px;
-  width: 100px;
+  width: 150px;
   height: 50px;
   border-radius: 50px;
   margin: 20px;
@@ -629,6 +637,23 @@ h1 {
   cursor: pointer;
   transform: scale(1.1);
 }
+#contribution__newVolcan {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(13, 151, 13);
+  width: 450px;
+  height: 250px;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
 
 .crsl {
   width: 600px;
@@ -641,6 +666,7 @@ h1 {
 }
 
 #maCarte {
+  z-index: 0;
   height: 250px;
   width: 500px;
   background-color: pink;
@@ -699,7 +725,42 @@ h1 {
 }
 #description button, #description1 button {
   display: flex;
-  margin: 5px auto;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgb(249, 248, 248);
+  transition: 0.2s;
+}
+#description button:hover, #description1 button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+#deleteFile {
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 200px;
+  border-radius: 20px;
+  background-color: rgb(236, 9, 9);
+  border: 2px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  font-size: 30px;
+}
+#deleteFile button {
+  margin: 0 5px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+#deleteFile button:hover {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=index.css.map */

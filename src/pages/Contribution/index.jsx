@@ -8,6 +8,7 @@ function Contribution(){
     const {connected} = useContext(ConnectedContext);
     const [pictures, setPictures] = useState([]);
     const [checked, setChecked] = useState(false);
+    const [contribution, setContribution] = useState(false);
     const navigate = useNavigate();
 
     const previewImage = (e) => {
@@ -145,7 +146,10 @@ function Contribution(){
                 }
             })
             .then (() => {
-                navigate("/Accueil")   
+                setContribution(true);
+                document.querySelector("#contribution__button--cancel").classList.add('hidden');
+                document.querySelector("#contribution__button--submit").classList.add('hidden');
+                setTimeout(()=> {navigate("/Accueil")}, 3000);   
             })
             .catch((res,err) => {
                 console.log(err);
@@ -199,7 +203,13 @@ return(
                         <input id = 'contribution__button--cancel' type="button" value = "Annuler" onClick = {goToAccueil}/>
                     </div>
                 </form>
-                
+                {contribution === true?
+                    <div id = "contribution__newVolcan">
+                        <p>Création d'un nouveau volcan</p><br />
+                        <p>Merci pour ce partage!</p>
+                    </div>
+                    :null
+                }
             </div>
             :
             <div id = 'contribution__NoConnected'>
