@@ -4,6 +4,11 @@
         justify-content: center;
         height: 20vh;
         width: 100vw;
+        &--textError{
+            color: red;
+            display: flex;
+            align-items: center;
+        }
     }
     &__image{
         width: 300px;

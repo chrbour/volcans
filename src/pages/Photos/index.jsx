@@ -99,7 +99,9 @@ function Photos(){
                         displayImages.map((e, index) => {
                             return <img className = 'photos__image' onClick = {selectImage} src={e.picture} alt = {e.name} data-selectimageid = {e.id} key = {`Image ${index}`}></img>
                         })
-                        : null
+                        : <div className = "photos__container--textError">
+                        <h2 >Aucune photo de volcan patagée pour l'instant</h2>
+                        </div>
                     }
                     {countImage+4 <= selectedImages.length-1 ? <p className = 'photos__arrowsContainer'><i className = "photos__arrows fa-solid fa-caret-right" onClick={handleRight}></i></p> : null}
                 </div>

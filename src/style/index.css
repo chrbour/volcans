@@ -229,6 +229,11 @@ h1 {
   height: 20vh;
   width: 100vw;
 }
+.photos__container--textError {
+  color: red;
+  display: flex;
+  align-items: center;
+}
 .photos__image {
   width: 300px;
 }
