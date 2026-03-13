@@ -90,6 +90,7 @@ function Description(){
         document.querySelector("#deleteButton").classList.remove("hidden");
         updateModifyOrDelete('');
     })
+
     const deleteConfirmed = (() => {console.log('token pour fetch : ',token)
         fetch (`http://localhost:3000/api/volcans/${volcanoId}`, {
             method: "DELETE",
@@ -104,9 +105,13 @@ function Description(){
         }
         )
         .then((value) => {
-            console.log(value)
+            document.querySelector("#deleteFile").innerHTML = "<p>Volcan supprimé</p>";
+            setTimeout(()=> {document.querySelector("#carousel").classList.add("hidden")}, 1000);
+            setTimeout(()=> {document.querySelector("#globeMap").classList.add("hidden")}, 1200);
+            setTimeout(()=> {document.querySelector("#description__text").classList.add("hidden")}, 1400);
+            setTimeout(()=> {navigate("/Accueil")}, 2000);
         })
-        .catch((err) => console.log(err))
+        .catch(() => alert("Problème de suppression de la fiche. Veuillez réessayer plus tard."))
     })
 
     return (
@@ -115,7 +120,7 @@ function Description(){
             <h1>{volcan}</h1>
             <Navbar />
             <div id = "description">       
-                <div>
+                <div id = "carousel">
                     <Carousel className = "crsl">
                         {images.map((e, index) =>{
                             return (
@@ -126,9 +131,9 @@ function Description(){
                                 )}
                             )}  
                     </Carousel>
-                    {creator === user? <button >Modifier les photos</button> : null}
+                    {creator === user? <button id = "modifyPhotosButton">Modifier les photos</button> : null}
                 </div>
-                <div>
+                <div id = "globeMap">
                     <MapWrapper name = {volcan} typeView = "global"/>
                     <MapWrapper name = {volcan} typeView = "volcan"/> 
                     {creator === user?<button id = "deleteButton" onClick = {deleteFile}>Supprimer ce volcan</button>:null}
@@ -142,7 +147,7 @@ function Description(){
                         <h2>Commentaire partagé :</h2>
                         <p>{comment}</p>   
                     </div>
-                    {creator === user?<button >Modifier commentaire</button> : null}
+                    {creator === user?<button id = "modifyCommentButton">Modifier commentaire</button> : null}
                 </div>
             </div>
             <div id = "description1"></div>
