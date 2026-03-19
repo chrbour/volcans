@@ -539,9 +539,6 @@ h1 {
   display: flex;
   justify-content: center;
 }
-#contribution__form label {
-  font-size: 20px;
-}
 #contribution__form--imgContainer {
   border: 2px #ffffff solid;
   padding: 15px 0;
@@ -662,11 +659,15 @@ h1 {
 
 .crsl {
   width: 600px;
-  margin: 40px 40px 5px;
+  margin: 40px 15px 5px;
   border: solid 3px #ffffff;
 }
 
 #mapid {
+  margin: 20px 0 5px;
+}
+
+#globeMap {
   margin-top: 20px;
 }
 
@@ -684,10 +685,9 @@ h1 {
 #description, #description1 {
   display: flex;
   justify-content: center;
-  margin: 15px;
 }
 #description__text, #description1__text {
-  margin: 20px;
+  margin: 30px 5px;
   width: 500px;
 }
 #description__details, #description1__details {
@@ -710,23 +710,44 @@ h1 {
   color: #ffffff;
   background-color: #000000;
 }
+#description__modifyComment--container, #description1__modifyComment--container {
+  width: 450px;
+  height: 300px;
+  margin: 15px;
+}
+#description__modifyComment--textarea, #description1__modifyComment--textarea {
+  width: 100%;
+  height: 100%;
+  color: #000000;
+  overflow: visible;
+  background-color: rgb(195, 250, 250);
+  padding: 10px;
+  border: solid 2px #ffffff;
+}
+#description__modifyComment--buttons, #description1__modifyComment--buttons {
+  display: flex;
+  justify-content: center;
+}
+#description__modifyComment--buttons input, #description1__modifyComment--buttons input {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+#description__modifyComment--buttons input:hover, #description1__modifyComment--buttons input:hover {
+  cursor: pointer;
+}
+#description__modifyComment--buttons input:nth-child(1), #description1__modifyComment--buttons input:nth-child(1) {
+  background-color: rgb(34, 200, 34);
+}
+#description__modifyComment--buttons input:nth-child(2), #description1__modifyComment--buttons input:nth-child(2) {
+  background-color: rgb(203, 39, 36);
+}
 #description__comment, #description1__comment {
   background-color: rgb(104, 43, 43);
   margin: 10px;
   padding: 10px;
   border: solid 2px #ffffff;
   border-radius: 20px;
-}
-#description__likesDislikes, #description1__likesDislikes {
-  display: flex;
-  justify-content: center;
-  font-size: 20px;
-}
-#description__likesDislikes i, #description1__likesDislikes i {
-  margin: 0 10px 30px;
-}
-#description__likesDislikes i:hover, #description1__likesDislikes i:hover {
-  cursor: pointer;
 }
 #description button, #description1 button {
   display: flex;
@@ -739,6 +760,30 @@ h1 {
 #description button:hover, #description1 button:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+#description__modifyPhotos--container, #description1__modifyPhotos--container {
+  display: flex;
+  justify-content: center;
+}
+#description__modifyPhotos--container + p, #description1__modifyPhotos--container + p {
+  text-align: center;
+}
+#description__modifyPhotos--label, #description1__modifyPhotos--label {
+  margin: 0 auto;
+  color: #000000;
+  background-color: #ffffff;
+  border: solid white 2px;
+  padding: 3px;
+  margin: 5px;
+  border-radius: 10px;
+  font-family: "Arial";
+  font-size: 13px;
+}
+#description__modifyPhotos--label:hover, #description1__modifyPhotos--label:hover {
+  cursor: pointer;
+}
+#description__modifyPhotos--button, #description1__modifyPhotos--button {
+  display: none;
 }
 
 #deleteFile {
