@@ -15,13 +15,13 @@ function Description(){
     const [volcan, updateVolcan] = useState();
     const [creator, updateCreator] = useState();
     const [images, updateImages] = useState([]);
-    const [imagesModified, updateImagesModified] = useState([]);
     const [comment, updateComment] = useState();
     const [commentModified, updateCommentModified]= useState();
     const [address, updateaddress] = useState();
     const [summary, updateSummary] = useState();
     const [modifyOrDelete, updateModifyOrDelete] = useState();
-    
+
+
     function fetchVolcanoWiki(name){
         fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${name}`)
             .then((res) => {
@@ -208,6 +208,10 @@ function Description(){
             validFiles.forEach(file => {
                 formData.append("imagesUrl", file);
             });
+            images.forEach(file => {
+                formData.append("oldFiles[]", file);
+            });
+            
             if (validFiles != ''){
                 fetch(`http://localhost:3000/api/volcans/${volcanoId}/images`,{
                     method: 'PUT',
@@ -276,7 +280,7 @@ function Description(){
                     {modifyOrDelete === 'modifyComment'?
                     <form id = 'description__modifyComment--container' onSubmit = {modifyCommentConfirm}>
                         <h2>Modification du commentaire:</h2>
-                        <textarea id = 'description__modifyComment--textarea' name = "textareaComment" type="text" value = {commentModified} onChange = {modifyCommentChangeText}/>
+                        <textarea id = 'description__modifyComment--textarea' name = "textareaComment" type="text" value = {commentModified} onChange = {modifyCommentChangeText} />
                         <div id = 'description__modifyComment--buttons'>
                             <input type="submit" value = 'Valider'/>
                             <input type="button" value = 'annuler' onClick = {modifyCommentCanceled}/>
