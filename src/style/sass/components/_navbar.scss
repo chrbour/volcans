@@ -9,9 +9,14 @@
         background-color: rgb(106, 26, 26);
         color: white;
         font-size: 20px;
-        border-radius: 20px;text-decoration: none;
+        border-radius: 20px;
+        text-decoration: none;
         padding: 10px;
         margin: 0 30px;
+        @media screen and (max-width: 768px){
+            font-size: 14px;
+            margin: 0 10px;
+        }
         &:hover{
         transform: scale(1.2);
         cursor: pointer;
