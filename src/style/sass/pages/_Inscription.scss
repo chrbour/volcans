@@ -14,9 +14,16 @@
     padding-top: 0px;
     font-size: 20px;
     text-align: center;
-    input{
-        font-size: 20px;
+    @media screen and (max-width: 1023px) {
+        width: 70%;
+    }
+    & input{
+        font-size: 18px;
         width: 45%;
+        @media screen and (max-width: 1023px) {
+            width: 100%;
+            font-size: 16px;
+        }
     }
 }
 
@@ -61,16 +68,26 @@
 }
 
 .inscription__messageOK{
-    background-color: rgb(56, 56, 184);
-    height: 80px;
+    background-color: rgb(50, 112, 57);
+    height: auto;
+    padding: 5px;
     width: 80%;
     border-radius: 20px;
     margin: auto;
+    @media screen and (max-width: 1024px){
+        width: 95%;
+        font-size: 14px;     
+    }
 }
 .inscription__messageNotOK{
     background-color: rgb(175, 38, 31);
-    height: 40px;
+    height: auto;
+    padding: 5px;
     width: 80%;
     border-radius: 20px;
     margin: auto;
+    @media screen and (max-width: 1024px){
+         width: 95%;
+         font-size: 14px;
+    }
 }

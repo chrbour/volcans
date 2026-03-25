@@ -61,15 +61,25 @@
 
 .connexion__messageOK{
     background-color: rgb(50, 112, 57);
-    height: 40px;
+    height: auto;
     width: 80%;
+    padding: 5px;
     border-radius: 20px;
     margin: auto;
-    
-}.connexion__messageNotOK{
+    @media screen and (max-width: 768px){
+    width: 95%;
+    font-size: 14px;
+    }  
+}
+.connexion__messageNotOK{
     background-color: rgb(175, 38, 31);
-    height: 40px;
+    height: auto;
+    padding: 5px;
     width: 80%;
     border-radius: 20px;
     margin: auto;
+    @media screen and (max-width: 768px){
+    width: 95%;
+    font-size: 14px;
+    }
 }
