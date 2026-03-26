@@ -301,19 +301,54 @@ h1 {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .photos__Title {
+    font-size: 18px;
+    margin: 20px 10px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .photos__Title {
+    margin: 10px;
+  }
+}
 .photos__container {
   display: flex;
   justify-content: center;
   height: 20vh;
   width: 100vw;
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .photos__container {
+    height: 40px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .photos__container {
+    height: 90px;
+  }
 }
 .photos__container--textError {
+  font-size: 14px;
   color: red;
   display: flex;
   align-items: center;
 }
 .photos__image {
   width: 300px;
+}
+@media screen and (max-width: 767px) {
+  .photos__image {
+    width: 90px;
+    height: 50px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .photos__image {
+    width: 150px;
+    height: 90px;
+  }
 }
 .photos__image:hover {
   cursor: pointer;
@@ -323,8 +358,18 @@ h1 {
   align-items: center;
 }
 .photos__arrows {
-  font-size: 150px;
+  font-size: 50px;
   color: #ffffff;
+}
+@media screen and (max-width: 767px) {
+  .photos__arrows {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .photos__arrows {
+    height: 60px;
+  }
 }
 .photos__arrows:hover {
   cursor: pointer;
@@ -339,7 +384,7 @@ h1 {
   width: 100px;
   height: 50px;
   border-radius: 50px;
-  margin: 20px;
+  margin: 0px 20px;
   background-color: grey;
   transition: transform 0.2s;
 }
@@ -357,10 +402,6 @@ h1 {
   display: flex;
   justify-content: center;
 }
-.filtres_Name {
-  margin: 10px;
-  width: 300px;
-}
 
 .volcanoSelected {
   background-color: rgb(227, 164, 153);
@@ -372,6 +413,11 @@ h1 {
   max-height: 100px;
   overflow-y: scroll;
   background-color: #d69a8f;
+}
+@media screen and (max-width: 1023px) {
+  .volcanoSelected {
+    width: 250px;
+  }
 }
 .volcanoSelected option:checked {
   background-color: #d69a8f;

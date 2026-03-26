@@ -91,7 +91,7 @@ function Photos(){
         <div>
             <Banner/>
             <Pictogram connected = {connected}/>
-            <h1 className = 'Photos__Title'>APERCU DE VOS PLUS BEAUX PARTAGES DE VOLCANS:</h1>
+            <h1 className = 'photos__Title'>APERCU DE VOS PLUS BEAUX PARTAGES DE VOLCANS:</h1>
             <div className="photo__body">
                 <div className = "photos__container">
                     {countImage >=4?<p className = 'photos__arrowsContainer'><i className="photos__arrows fa-solid fa-caret-left" onClick={handleLeft}></i></p>:null}
