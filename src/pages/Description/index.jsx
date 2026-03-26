@@ -241,7 +241,7 @@ function Description(){
     }
     return (
         <>
-            <Pictogram connected = {connected}/>
+            <Pictogram connected = {connected}/><br/>
             <h1>{volcan}</h1>
             <Navbar />
             <div id = "description">       
