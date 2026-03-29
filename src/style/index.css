@@ -708,11 +708,23 @@ h1 {
   display: flex;
   justify-content: center;
 }
+@media screen and (max-width: 1200px) {
+  #contribution__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 #contribution__form--imgContainer {
   border: 2px #ffffff solid;
   padding: 15px 0;
   margin: 0 10px;
   height: 400px;
+}
+@media screen and (max-width: 1200px) {
+  #contribution__form--imgContainer {
+    width: 90vw;
+  }
 }
 #contribution__form--imgContainer--input {
   display: flex;
@@ -756,6 +768,11 @@ h1 {
   width: 500px;
   height: 250px;
   font-size: 15px;
+}
+@media screen and (max-width: 1200px) {
+  #contribution__description {
+    width: 90vw;
+  }
 }
 #contribution__volcanoType {
   display: flex;
