@@ -1,3 +1,37 @@
+# Volcans
+![Volcans-Accueil](https://github.com/chrbour/volcans/blob/main/src/assets/Accueil.png)
+![Volcans-Presentation](https://github.com/chrbour/volcans/blob/main/src/assets/Presentation.png)
+![Volcans-Connexion](https://github.com/chrbour/volcans/blob/main/src/assets/Connexion.png)
+![Volcans-Contribution](https://github.com/chrbour/volcans/blob/main/src/assets/Contribution.png)
+![Volcans-Photos](https://github.com/chrbour/volcans/blob/main/src/assets/Photos.png)
+![Volcans-Description](https://github.com/chrbour/volcans/blob/main/src/assets/Description.png)
+
+# Présentation
+Ce projet personnel permet de partager des photos et commentaires concernant les volcans.  
+Cette partie front du projet fonctionne avec le back-end suivant:
+https://github.com/chrbour/volcans-back.
+
+Tout utilisateur peut, sans être connecté, consulter les partages.
+Cependant seules les personnes identifiées peuvent ajouter une contribution (nom du volcan, photos, commentaire).
+L'existence du volcans est vérifiée en back-end avec Wikipedia.  
+La page du volcan sélectionné ("/Description") contient:
+- un carrousel des photos partagées par un utilisateur
+- sa localisation sur des cartes à l'aide de Leaflet
+- un descriptif succinct et un lien vers la page Wikipedia
+- le commentaire partagé.
+
+Cette page peut être supprimée ou modifiée (photos et commentaire) uniquement par l'auteur du partage.
+
+# Langages utilisés
+**HTML, CSS, JSX**
+
+# Outils utilisés
+React.js  
+Yarn  
+Sass
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -9,7 +43,7 @@ In the project directory, you can run:
 ### `yarn start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:4200](http://localhost:4200) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
