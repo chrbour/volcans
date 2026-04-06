@@ -12,8 +12,8 @@ Cette partie front du projet fonctionne avec le back-end suivant:
 https://github.com/chrbour/volcans-back.
 
 Tout utilisateur peut, sans être connecté, consulter les partages.
-Cependant seules les personnes identifiées peuvent ajouter une contribution (nom du volcan, photos, commentaire).
-L'existence du volcans est vérifiée en back-end avec Wikipedia.  
+Cependant seules les personnes identifiées peuvent ajouter une contribution (nom du volcan, photos, commentaire).  
+L'existence du volcan est vérifiée en back-end avec Wikipedia.  
 La page du volcan sélectionné ("/Description") contient:
 - un carrousel des photos partagées par un utilisateur
 - sa localisation sur des cartes à l'aide de Leaflet
